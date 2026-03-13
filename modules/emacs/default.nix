@@ -7,6 +7,7 @@
       extraPackages =
         epkgs: with epkgs; [
           vterm
+          treesit-grammars.with-all-grammars
         ];
     };
 
@@ -34,7 +35,7 @@
       # :lang latex
       texlive.combined.scheme-full
       # :checkers spell
-      (aspellwithdicts (
+      (aspellWithDicts (
         ds: with ds; [
           en
           nl
@@ -42,6 +43,6 @@
       ))
     ];
 
-    home.sessionpath = [ "$home/.config/emacs/bin" ];
+    home.sessionPath = [ "$home/.config/emacs/bin" ];
   };
 }
