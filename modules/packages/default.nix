@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home-manager.users.jeffrey = {
     home.packages = with pkgs; [
       file
@@ -37,7 +38,6 @@
       clang-tools
       ruff
       pyright
-      texlive.combined.scheme-full
       texlab
       nixd
       nil
@@ -54,7 +54,7 @@
         VISUAL = "nvim";
       };
 
-      sessionPath = ["$HOME/.config/emacs/bin"];
+      sessionPath = [ "$HOME/.config/emacs/bin" ];
 
       file = {
         ".config/gtk-3.0/bookmarks".text = ''
