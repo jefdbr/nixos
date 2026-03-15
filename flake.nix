@@ -29,62 +29,71 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  }: {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./machines/desktop
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              sharedModules = [
-                inputs.noctalia.homeModules.default
-                inputs.lazyvim.homeManagerModules.default
-                inputs.spicetify-nix.homeManagerModules.default
-              ];
-            };
-          }
-          ./modules/boot
-          ./modules/locale
-          ./modules/networking
-          ./modules/gaming
-          ./modules/nix
-          ./modules/core
-          ./modules/packages
-          ./modules/desktop-services
-          ./modules/zsh
-          ./modules/kitty
-          ./modules/neovim
-          ./modules/emacs
-          ./modules/direnv
-          ./modules/gpg
-          ./modules/git
-          ./modules/fastfetch
-          ./modules/spicetify
-          ./modules/theme
-        ];
-      };
-
-      # laptop = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {inherit inputs;};
-      #   modules = [
-      #     ./machines/laptop
-      #     home-manager.nixosModules.home-manager
-      #     { home-manager.useGlobalPkgs = true; home-manager.useUserPackages = true; }
-      #     ./modules/boot
-      #     # ... laptop-specific module list
-      #   ];
-      # };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.stylix.nixosModules.stylix
+            ./machines/desktop
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                sharedModules = [
+                  inputs.noctalia.homeModules.default
+                  inputs.lazyvim.homeManagerModules.default
+                  inputs.spicetify-nix.homeManagerModules.default
+                ];
+              };
+            }
+            ./modules/boot
+            ./modules/locale
+            ./modules/networking
+            ./modules/gaming
+            ./modules/nix
+            ./modules/core
+            ./modules/packages
+            ./modules/desktop-services
+            ./modules/zsh
+            ./modules/kitty
+            ./modules/neovim
+            ./modules/emacs
+            ./modules/direnv
+            ./modules/gpg
+            ./modules/git
+            ./modules/fastfetch
+            ./modules/spicetify
+            ./modules/theme
+          ];
+        };
+
+        # laptop = nixpkgs.lib.nixosSystem {
+        #   specialArgs = {inherit inputs;};
+        #   modules = [
+        #     ./machines/laptop
+        #     home-manager.nixosModules.home-manager
+        #     { home-manager.useGlobalPkgs = true; home-manager.useUserPackages = true; }
+        #     ./modules/boot
+        #     # ... laptop-specific module list
+        #   ];
+        # };
+      };
+    };
 }

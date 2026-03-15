@@ -48,10 +48,8 @@
 
       sessionVariables = {
         XDG_SESSION_TYPE = "wayland";
-        QT_QPA_PLATFORM = "wayland";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
-        EDITOR = "nvim";
-        VISUAL = "nvim";
+        EDITOR = "emacs";
+        VISUAL = "emacs";
       };
 
       sessionPath = [ "$HOME/.config/emacs/bin" ];

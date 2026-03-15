@@ -1,17 +1,16 @@
 {
   pkgs,
-  inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     vim
     wget
     zip
     unzip
     docker-compose
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
-    (firefox.override {nativeMessagingHosts = [passff-host];})
+    (firefox.override { nativeMessagingHosts = [ passff-host ]; })
     nautilus
     trash-cli
     shfmt
@@ -19,6 +18,7 @@
     multimarkdown
   ];
 
+  home-manager.users.jeffrey.programs.noctalia-shell.enable = true;
   virtualisation.docker.enable = true;
 
   hardware.bluetooth.enable = true;

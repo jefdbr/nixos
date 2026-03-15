@@ -1,12 +1,15 @@
-{config, ...}: {
+{ config, ... }:
+{
   networking = {
     networkmanager.enable = true;
     nftables.enable = true;
     firewall = {
       enable = true;
-      trustedInterfaces = ["tailscale0"];
-      allowedUDPPorts = [config.services.tailscale.port];
-      allowedTCPPorts = [80];
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+      allowedTCPPorts = [
+        8080
+      ];
     };
   };
 
@@ -26,7 +29,7 @@
     virtualHosts."localhost" = {
       listen = [
         {
-          addr = "127.0.0.1";
+          addr = "0.0.0.0";
           port = 8080;
         }
       ];
