@@ -18,9 +18,7 @@
     multimarkdown
   ];
 
-  home-manager.users.jeffrey.programs.noctalia-shell.enable = true;
   virtualisation.docker.enable = true;
-
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
 

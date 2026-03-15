@@ -63,6 +63,7 @@
                 ];
               };
             }
+            ./modules/noctalia
             ./modules/boot
             ./modules/locale
             ./modules/networking
