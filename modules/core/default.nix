@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -10,17 +6,19 @@
     unzip
     docker-compose
     xwayland-satellite
-    (firefox.override { nativeMessagingHosts = [ passff-host ]; })
+    (firefox.override {nativeMessagingHosts = [passff-host];})
     nautilus
     trash-cli
     shfmt
     nixfmt
     multimarkdown
+    jq
   ];
 
   virtualisation.docker.enable = true;
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
+  programs.nix-ld.enable = true;
 
   services = {
     openssh.enable = true;

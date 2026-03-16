@@ -3,6 +3,11 @@ let
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   home-manager.users.jeffrey = {
     stylix.targets.emacs.enable = false;
 

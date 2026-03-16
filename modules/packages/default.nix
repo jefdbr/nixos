@@ -41,6 +41,7 @@
       texlab
       nixd
       nil
+      vscode.fhs
     ];
 
     home = {
