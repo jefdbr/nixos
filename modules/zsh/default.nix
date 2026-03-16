@@ -1,4 +1,5 @@
-{pkgs, lib, ...}: {
+{ pkgs, lib, ... }:
+{
   # ── System ────────────────────────────────────────────────────────────────────
   programs.zsh.enable = true;
 
@@ -10,11 +11,7 @@
     oh-my-zsh = {
       enable = true;
       theme = "eastwood-custom";
-      custom = "${
-        pkgs.writeTextDir
-        "share/zsh/custom/themes/eastwood-custom.zsh-theme"
-        (builtins.readFile ../../assets/eastwood-custom.zsh-theme)
-      }/share/zsh/custom";
+      custom = "${pkgs.writeTextDir "share/zsh/custom/themes/eastwood-custom.zsh-theme" (builtins.readFile ../../assets/eastwood-custom.zsh-theme)}/share/zsh/custom";
       plugins = [
         "vi-mode"
         "ssh-agent"
@@ -27,7 +24,6 @@
     };
 
     shellAliases = {
-      vim = "nvim";
       o = "xdg-open";
       ls = "eza --icons=always";
       lt = "eza --tree --icons=always";
