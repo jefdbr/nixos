@@ -2,8 +2,6 @@
 {
   stylix = {
     enable = true;
-    # image = /home/jeffrey/Pictures/Wallpapers/wallhaven-xe762v.jpg;
-    # polarity = "dark";
 
     base16Scheme = {
       base00 = "1e1e1e"; # background
@@ -30,7 +28,7 @@
       size = 24;
     };
 
-    iconTheme = {
+    icons = {
       enable = true;
       package = pkgs.adwaita-icon-theme;
       dark = "Adwaita";

@@ -20,11 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lazyvim = {
-      url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +53,6 @@
                 backupFileExtension = "backup";
                 sharedModules = [
                   inputs.noctalia.homeModules.default
-                  inputs.lazyvim.homeManagerModules.default
                   inputs.spicetify-nix.homeManagerModules.default
                 ];
               };
@@ -74,7 +68,6 @@
             ./modules/desktop-services
             ./modules/zsh
             ./modules/kitty
-            ./modules/neovim
             ./modules/emacs
             ./modules/direnv
             ./modules/gpg
