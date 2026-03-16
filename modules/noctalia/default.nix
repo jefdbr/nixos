@@ -28,26 +28,33 @@
             }
           ];
           right = [
-            { id = "Network"; displayMode = "onhover"; }
+            {
+              id = "Network";
+              displayMode = "onhover";
+            }
             { id = "Tray"; }
             {
               id = "Battery";
               displayMode = "graphic-clean";
               hideIfNotDetected = true;
             }
-            { id = "Volume"; displayMode = "onhover"; }
-            { id = "Brightness"; displayMode = "onhover"; }
+            {
+              id = "Volume";
+              displayMode = "onhover";
+            }
+            {
+              id = "Brightness";
+              displayMode = "onhover";
+            }
             { id = "plugin:kde-connect"; }
             { id = "plugin:screen-recorder"; }
             { id = "plugin:tailscale"; }
-            { id = "ControlCenter"; icon = "noctalia"; }
+            {
+              id = "ControlCenter";
+              icon = "noctalia";
+            }
           ];
         };
-      };
-      colorSchemes = {
-        darkMode = true;
-        useWallpaperColors = false;
-        predefinedScheme = "Noctalia (default)";
       };
       dock = {
         enabled = true;
@@ -55,7 +62,6 @@
         position = "bottom";
       };
       location = {
-        name = "West-Vlaanderen";
         weatherEnabled = true;
         useFahrenheit = false;
         weatherShowEffects = false;
@@ -69,7 +75,7 @@
         skipStartupTransition = true;
       };
       templates = {
-        activeTemplates = [];
+        activeTemplates = [ ];
         enableUserTheming = false;
       };
       plugins = {
