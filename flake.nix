@@ -78,7 +78,6 @@
           ];
         };
 
-
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
@@ -92,7 +91,6 @@
                 backupFileExtension = "backup";
                 sharedModules = [
                   inputs.noctalia.homeModules.default
-                  inputs.lazyvim.homeManagerModules.default
                   inputs.spicetify-nix.homeManagerModules.default
                 ];
               };
@@ -101,14 +99,12 @@
             ./modules/boot
             ./modules/locale
             ./modules/networking
-            # ./modules/gaming
             ./modules/nix
             ./modules/core
             ./modules/packages
             ./modules/desktop-services
             ./modules/zsh
             ./modules/kitty
-            ./modules/neovim
             ./modules/emacs
             ./modules/direnv
             ./modules/gpg
