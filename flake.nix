@@ -85,16 +85,46 @@
           ];
         };
 
-        # laptop = nixpkgs.lib.nixosSystem {
-        #   specialArgs = {inherit inputs;};
-        #   modules = [
-        #     ./machines/laptop
-        #     home-manager.nixosModules.home-manager
-        #     { home-manager.useGlobalPkgs = true; home-manager.useUserPackages = true; }
-        #     ./modules/boot
-        #     # ... laptop-specific module list
-        #   ];
-        # };
+
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.stylix.nixosModules.stylix
+            ./machines/laptop
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                sharedModules = [
+                  inputs.noctalia.homeModules.default
+                  inputs.lazyvim.homeManagerModules.default
+                  inputs.spicetify-nix.homeManagerModules.default
+                ];
+              };
+            }
+            ./modules/noctalia
+            ./modules/boot
+            ./modules/locale
+            ./modules/networking
+            # ./modules/gaming
+            ./modules/nix
+            ./modules/core
+            ./modules/packages
+            ./modules/desktop-services
+            ./modules/zsh
+            ./modules/kitty
+            ./modules/neovim
+            ./modules/emacs
+            ./modules/direnv
+            ./modules/gpg
+            ./modules/git
+            ./modules/fastfetch
+            ./modules/spicetify
+            ./modules/theme
+          ];
+        };
       };
     };
 }
