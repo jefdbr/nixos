@@ -51,7 +51,7 @@
             { id = "plugin:tailscale"; }
             {
               id = "ControlCenter";
-              icon = "noctalia";
+              useDistroLogo = true;
             }
           ];
         };
