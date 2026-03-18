@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -6,7 +7,7 @@
     unzip
     docker-compose
     xwayland-satellite
-    (firefox.override {nativeMessagingHosts = [passff-host];})
+    (firefox.override { nativeMessagingHosts = [ passff-host ]; })
     nautilus
     trash-cli
     shfmt

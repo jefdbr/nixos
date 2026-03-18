@@ -59,6 +59,7 @@
         ".config/gtk-3.0/bookmarks".text = ''
           sftp://home-server home-server
           sftp://desaere desaere
+          file:///run/user/1000/af07df57_9074_49a8_98ed_59c9db2a0233/storage/emulated/0 gsm-jeffrey
         '';
       };
     };
