@@ -3,23 +3,29 @@
   home-manager.users.jeffrey.programs.noctalia-shell = {
     enable = true;
     settings = {
+      controlCenter = {
+        shortcuts = {
+          left = [
+            { id = "Network"; }
+            { id = "Bluetooth"; }
+            { id = "WallpaperSelector"; }
+            { id = "NoctaliaPerformance"; }
+          ];
+          right = [
+            { id = "PowerProfile"; }
+            { id = "KeepAwake"; }
+            { id = "plugin:kde-connect"; }
+            { id = "plugin:screen-recorder"; }
+          ];
+        };
+      };
       bar = {
         density = "spacious";
         position = "top";
         widgets = {
           left = [
-            {
-              id = "Workspace";
-              labelMode = "index";
-              hideUnoccupied = false;
-              showBadge = true;
-            }
-            {
-              id = "MediaMini";
-              maxWidth = 145;
-              showAlbumArt = true;
-              showProgressRing = true;
-            }
+            { id = "Workspace"; }
+            { id = "MediaMini"; }
           ];
           center = [
             {
@@ -28,27 +34,21 @@
             }
           ];
           right = [
-            {
-              id = "Network";
-              displayMode = "onhover";
-            }
             { id = "Tray"; }
             {
+              id = "plugin:privacy-indicator";
+              defaultSettings = {
+                hideInactive = false;
+              };
+            }
+            { id = "Network"; }
+            {
               id = "Battery";
-              displayMode = "graphic-clean";
               hideIfNotDetected = true;
             }
-            {
-              id = "Volume";
-              displayMode = "onhover";
-            }
-            {
-              id = "Brightness";
-              displayMode = "onhover";
-            }
-            { id = "plugin:kde-connect"; }
-            { id = "plugin:screen-recorder"; }
-            { id = "plugin:tailscale"; }
+            { id = "Volume"; }
+            { id = "Brightness"; }
+            { id = "NotificationHistory"; }
             {
               id = "ControlCenter";
               useDistroLogo = true;
@@ -57,9 +57,7 @@
         };
       };
       dock = {
-        enabled = true;
-        displayMode = "auto_hide";
-        position = "bottom";
+        enabled = false;
       };
       location = {
         weatherEnabled = true;
@@ -70,13 +68,7 @@
         enabled = true;
         directory = "/home/jeffrey/Pictures/Wallpapers";
         fillMode = "crop";
-        transitionType = "random";
-        transitionDuration = 1500;
         skipStartupTransition = true;
-      };
-      templates = {
-        activeTemplates = [ ];
-        enableUserTheming = false;
       };
       plugins = {
         autoUpdate = true;
@@ -87,6 +79,8 @@
       idle = {
         enabled = true;
         lockTimeout = 300;
+        screenOffTimeout = 0;
+        suspendTimeout = 0;
       };
       hooks = {
         enabled = true;

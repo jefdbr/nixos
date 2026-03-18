@@ -21,6 +21,7 @@
   security.rtkit.enable = true;
   programs.nix-ld.enable = true;
 
+  security.pam.services.login.enableGnomeKeyring = true;
   services = {
     openssh.enable = true;
     upower.enable = true;

@@ -42,6 +42,8 @@
       nixd
       nil
       vscode.fhs
+      seahorse
+      qt6.qtdeclarative
     ];
 
     home = {
