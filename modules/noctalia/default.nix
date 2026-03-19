@@ -24,7 +24,14 @@
         position = "top";
         widgets = {
           left = [
-            { id = "Workspace"; }
+            {
+              id = "Workspace";
+              focusedColor = "primary";
+              occupiedColor = "none";
+              emptyColor = "none";
+              pillSize = 0.4;
+              labelMode = "none";
+            }
             { id = "MediaMini"; }
           ];
           center = [
@@ -34,7 +41,10 @@
             }
           ];
           right = [
-            { id = "Tray"; }
+            {
+              id = "Tray";
+              drawerEnabled = false;
+            }
             {
               id = "plugin:privacy-indicator";
               defaultSettings = {
@@ -84,9 +94,22 @@
       };
       hooks = {
         enabled = true;
-        startup = ''
-          export loc=$(${lib.getExe pkgs.curl} -s ipinfo.io | ${lib.getExe pkgs.jq} -r ".city + \",\" + .country"); noctalia-shell ipc call location set $loc
-        '';
+        startup =
+          let
+            where-am-i = "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/where-am-i";
+          in
+          ''
+            loc=$(curl -s ipinfo.io | jq -r '.city + "," + .country')
+            noctalia-shell ipc call location set "$loc"
+
+            coords=$(${where-am-i} -t 10 2>/dev/null | grep -oP '[\d.]+' | head -2 | paste -sd,)
+            if [ -n "$coords" ]; then
+              lat=$(echo "$coords" | cut -d',' -f1)
+              lon=$(echo "$coords" | cut -d',' -f2)
+              loc=$(curl -s "https://nominatim.openstreetmap.org/reverse?lat=$lat&lon=$lon&format=json" | jq -r '(.address.village // .address.town // .address.city) + "," + .address.country')
+              noctalia-shell ipc call location set "$loc"
+            fi
+          '';
       };
     };
   };

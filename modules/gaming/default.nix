@@ -1,10 +1,18 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.mangohud ];
+  environment.systemPackages = [
+    pkgs.mangohud
+    pkgs.polychromatic
+  ];
 
   services.scx = {
     enable = true;
     scheduler = "scx_lavd";
+  };
+
+  hardware.openrazer = {
+    enable = true;
+    users = [ "jeffrey" ];
   };
 
   programs = {
