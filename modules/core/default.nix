@@ -14,7 +14,6 @@
     nixfmt
     multimarkdown
     jq
-    geoclue2
     python3
   ];
 
@@ -38,10 +37,5 @@
     upower.enable = true;
     power-profiles-daemon.enable = true;
     gvfs.enable = true;
-    geoclue2 = {
-      enable = true;
-      enableWifi = true;
-      enableDemoAgent = true;
-    };
   };
 }
