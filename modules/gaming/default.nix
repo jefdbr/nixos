@@ -2,6 +2,11 @@
 {
   environment.systemPackages = [ pkgs.mangohud ];
 
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
+
   programs = {
     gamemode.enable = true;
     gamescope.enable = true;
