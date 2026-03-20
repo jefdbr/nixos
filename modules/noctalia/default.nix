@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 {
   home-manager.users.jeffrey.programs.noctalia-shell = {
     enable = true;
@@ -97,6 +97,10 @@
         startup = ''
           noctalia-shell ipc call location set $(curl -s ipinfo.io | jq -r ".city + \",\" + .country")
         '';
+      };
+      appLauncher = {
+        enableClipboardHistory = true;
+        terminalCommand = "kitty -e";
       };
     };
   };

@@ -75,6 +75,7 @@
             ./modules/fastfetch
             ./modules/spicetify
             ./modules/theme
+            ./modules/calender
           ];
         };
 
