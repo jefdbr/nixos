@@ -44,7 +44,17 @@
       vscode.fhs
       seahorse
       qt6.qtdeclarative
+      (pkgs.writeShellApplication {
+        name = "ns";
+        runtimeInputs = [
+          fzf
+          nix-search-tv
+        ];
+        text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+      })
     ];
+
+    programs.fzf.enable = true;
 
     home = {
       stateVersion = "25.11";

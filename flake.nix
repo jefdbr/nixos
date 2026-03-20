@@ -29,6 +29,9 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
   };
 
   outputs =
@@ -76,6 +79,7 @@
             ./modules/spicetify
             ./modules/theme
             ./modules/calender
+            ./modules/cachyos-kernel
           ];
         };
 

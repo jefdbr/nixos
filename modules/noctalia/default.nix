@@ -1,7 +1,10 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 {
   home-manager.users.jeffrey.programs.noctalia-shell = {
     enable = true;
+    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      calendarSupport = true;
+    };
     settings = {
       controlCenter = {
         shortcuts = {
