@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
-    targets.spicetify.enable = lib.mkForce false;
+    targets.spicetify.enable = false;
 
     base16Scheme = {
       base00 = "1e1e1e"; # background

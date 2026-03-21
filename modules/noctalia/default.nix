@@ -6,6 +6,10 @@
       calendarSupport = true;
     };
     settings = {
+      general = {
+        telemetryEnabled = true;
+        animationSpeed = 1.5;
+      };
       controlCenter = {
         shortcuts = {
           left = [
@@ -23,7 +27,8 @@
         };
       };
       bar = {
-        density = "spacious";
+        showOutline = false;
+        density = "comfortable";
         position = "top";
         widgets = {
           left = [
@@ -34,6 +39,10 @@
               emptyColor = "none";
               pillSize = 0.4;
               labelMode = "none";
+              hideUnoccupied = true;
+              showApplications = true;
+              unfocusedIconsOpacity = 0.5;
+              groupedBorderOpacity = 0;
             }
             { id = "MediaMini"; }
           ];
@@ -47,6 +56,9 @@
             {
               id = "Tray";
               drawerEnabled = false;
+              blacklist = [
+                "spotify-client"
+              ];
             }
             {
               id = "plugin:privacy-indicator";
