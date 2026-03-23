@@ -79,7 +79,6 @@
             ./modules/spicetify
             ./modules/theme
             ./modules/calender
-            ./modules/cachyos-kernel
           ];
         };
 
@@ -117,7 +116,6 @@
             ./modules/fastfetch
             ./modules/spicetify
             ./modules/theme
-            ./modules/cachyos-kernel
           ];
         };
       };

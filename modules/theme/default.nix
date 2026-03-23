@@ -2,7 +2,6 @@
 {
   stylix = {
     enable = true;
-    targets.spicetify.enable = false;
 
     base16Scheme = {
       base00 = "1e1e1e"; # background
@@ -24,16 +23,16 @@
     };
 
     cursor = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
       size = 24;
     };
 
     icons = {
       enable = true;
-      package = pkgs.adwaita-icon-theme;
-      dark = "Adwaita";
-      light = "Adwaita";
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
 
     fonts = {
