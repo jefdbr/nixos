@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,89 +32,11 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
-    {
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.stylix.nixosModules.stylix
-            ./machines/desktop
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                sharedModules = [
-                  inputs.noctalia.homeModules.default
-                  inputs.spicetify-nix.homeManagerModules.default
-                ];
-              };
-            }
-            ./modules/noctalia
-            ./modules/boot
-            ./modules/locale
-            ./modules/networking
-            ./modules/gaming
-            ./modules/nix
-            ./modules/core
-            ./modules/packages
-            ./modules/desktop-services
-            ./modules/zsh
-            ./modules/kitty
-            ./modules/emacs
-            ./modules/direnv
-            ./modules/gpg
-            ./modules/git
-            ./modules/fastfetch
-            ./modules/spicetify
-            ./modules/theme
-            ./modules/calender
-          ];
-        };
-
-        laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.stylix.nixosModules.stylix
-            ./machines/laptop
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                sharedModules = [
-                  inputs.noctalia.homeModules.default
-                  inputs.spicetify-nix.homeManagerModules.default
-                ];
-              };
-            }
-            ./modules/noctalia
-            ./modules/boot
-            ./modules/locale
-            ./modules/networking
-            ./modules/nix
-            ./modules/core
-            ./modules/packages
-            ./modules/desktop-services
-            ./modules/zsh
-            ./modules/kitty
-            ./modules/emacs
-            ./modules/direnv
-            ./modules/gpg
-            ./modules/git
-            ./modules/fastfetch
-            ./modules/spicetify
-            ./modules/theme
-          ];
-        };
-      };
-    };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      {
+        systems = [ "x86_64-linux" ];
+      }
+      // (inputs.import-tree ./modules)
+    );
 }
