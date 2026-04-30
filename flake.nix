@@ -27,6 +27,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    clipboard-sync = {
+      url = "github:dnut/clipboard-sync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };

@@ -1,12 +1,32 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.desktop-services =
     { pkgs, ... }:
     {
+      imports = [ inputs.niri.nixosModules.niri ];
+      nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
+      services.clipboard-sync.enable = true;
+
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+
       programs = {
         kdeconnect.enable = true;
-        niri.enable = true;
+        niri = {
+          enable = true;
+          package = pkgs.niri;
+        };
         gpu-screen-recorder.enable = true;
+      };
+
+      home-manager.users.jeffrey = {
+        programs.niri.config = null;
+        stylix.targets.niri.enable = false;
       };
 
       home-manager.users.jeffrey.systemd.user = {
