@@ -6,6 +6,9 @@
       imports = [ inputs.niri.nixosModules.niri ];
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
+      environment.systemPackages = [ pkgs.ddcutil ];
+      hardware.i2c.enable = true;
+
       services.clipboard-sync.enable = true;
 
       services.pipewire = {

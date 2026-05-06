@@ -6,6 +6,7 @@
       environment.systemPackages = with pkgs; [
         vim
         wget
+        lsof
         zip
         unzip
         docker-compose

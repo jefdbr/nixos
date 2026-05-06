@@ -19,8 +19,8 @@
 
           sessionVariables = {
             XDG_SESSION_TYPE = "wayland";
-            EDITOR = "emacs";
-            VISUAL = "emacs";
+            EDITOR = "vim";
+            VISUAL = "vim";
           };
 
           sessionPath = [ "$HOME/.config/emacs/bin" ];
