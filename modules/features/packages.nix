@@ -30,6 +30,7 @@
           aider-chat
 
           # Wayland / desktop
+          wayfreeze
           grim
           slurp
           swappy

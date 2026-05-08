@@ -22,18 +22,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    clipboard-sync = {
-      url = "github:dnut/clipboard-sync";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

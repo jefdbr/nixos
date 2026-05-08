@@ -9,8 +9,6 @@
       environment.systemPackages = [ pkgs.ddcutil ];
       hardware.i2c.enable = true;
 
-      services.clipboard-sync.enable = true;
-
       services.pipewire = {
         enable = true;
         alsa.enable = true;

@@ -9,7 +9,6 @@
         backupFileExtension = "backup";
         sharedModules = [
           inputs.noctalia.homeModules.default
-          inputs.spicetify-nix.homeManagerModules.default
         ];
       };
 

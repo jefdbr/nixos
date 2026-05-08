@@ -19,9 +19,14 @@
         multimarkdown
         jq
         python3
+        ps_mem
       ];
 
-      virtualisation.docker.enable = true;
+      virtualisation.docker = {
+        enableOnBoot = false;
+        enable = true;
+      };
+
       hardware.bluetooth.enable = true;
       security.rtkit.enable = true;
       programs.nix-ld.enable = true;

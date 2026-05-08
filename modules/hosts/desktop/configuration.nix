@@ -7,7 +7,6 @@
         self.nixosModules.desktopHardware
         inputs.stylix.nixosModules.stylix
         inputs.home-manager.nixosModules.home-manager
-        inputs.clipboard-sync.nixosModules.default
         self.nixosModules.users
         self.nixosModules.home-manager
         self.nixosModules.nix-settings
@@ -26,7 +25,6 @@
         self.nixosModules.gpg
         self.nixosModules.git
         self.nixosModules.fastfetch
-        self.nixosModules.spicetify
         self.nixosModules.networking
         self.nixosModules.calendar
         self.nixosModules.gaming

@@ -29,6 +29,8 @@
       environment.systemPackages = with pkgs; [
         mangohud
         polychromatic
+        gamescope
+        gamemode
         (heroic.override {
           extraPkgs =
             pkgs': with pkgs'; [
