@@ -32,14 +32,14 @@
 
         shellAliases = {
           o = "xdg-open";
-          ls = "eza --icons=always";
+          ls = "eza --icons=always --group-directories-first";
           lt = "eza --tree --icons=always";
+          cat = "bat --style=plain --paging=never";
           cd = "z";
           cdi = "zi";
-          dev = "nix develop --ignore-dirty";
-          rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)";
-          update = "sudo nix flake update --flake /etc/nixos";
-          clean = "sudo nix-collect-garbage -d";
+          rebuild = "nh os switch";
+          update = "nh os switch --update";
+          clean = "nix-collect-garbage -d && nix store optimise";
         };
 
         history = {

@@ -41,8 +41,22 @@
       ];
 
       security.pam.services.login.enableGnomeKeyring = true;
+
+      zramSwap.enable = true;
+
+      programs.nh = {
+        enable = true;
+        flake = "/etc/nixos";
+      };
+
       services = {
-        openssh.enable = true;
+        openssh = {
+          enable = true;
+          settings = {
+            PasswordAuthentication = false;
+            PermitRootLogin = "no";
+          };
+        };
         upower.enable = true;
         power-profiles-daemon.enable = true;
         gvfs.enable = true;

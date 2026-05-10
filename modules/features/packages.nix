@@ -16,6 +16,8 @@
           ripgrep
           fd
           shellcheck
+          bat
+          dust
 
           # Dev tooling
           nodejs

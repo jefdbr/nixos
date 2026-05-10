@@ -51,6 +51,20 @@
           "$HOME/.config/emacs/bin"
           "$HOME/.local/bin"
         ];
+
+        xdg.desktopEntries."emacsclient" = {
+          name = "Emacs (Client)";
+          noDisplay = true;
+        };
+        xdg.desktopEntries."emacsclient-mail" = {
+          name = "Emacs (Client) Mail";
+          noDisplay = true;
+        };
+        xdg.desktopEntries."emacs-mail" = {
+          name = "Emacs Mail";
+          noDisplay = true;
+        };
+
       };
     };
 }

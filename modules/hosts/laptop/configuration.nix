@@ -30,5 +30,9 @@
 
       networking.hostName = "laptop";
       system.stateVersion = "25.11";
+
+      services.power-profiles-daemon.enable = false;
+      services.auto-cpufreq.enable = true;
+      services.thermald.enable = true;
     };
 }
