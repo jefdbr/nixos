@@ -4,6 +4,10 @@
     { pkgs, ... }:
     {
       home-manager.users.jeffrey = {
+        home.sessionVariables = {
+          MOZ_ENABLE_WAYLAND = "1";
+        };
+
         programs.firefox = {
           enable = true;
           package = pkgs.librewolf;
@@ -11,12 +15,6 @@
           policies = {
             DontCheckDefaultBrowser = true;
             OfferToSaveLogins = false;
-            EnableTrackingProtection = {
-              Value = true;
-              Locked = true;
-              Cryptomining = true;
-              Fingerprinting = true;
-            };
             ExtensionSettings = {
               "uBlock0@raymondhill.net" = {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
@@ -36,33 +34,14 @@
               };
             };
           };
+
           profiles.default = {
             isDefault = true;
-            bookmarks = {
-              force = true;
-              settings = [
-                {
-                  name = "School";
-                  bookmarks = [
-                    {
-                      name = "Mail school";
-                      url = "https://outlook.office365.com/mail/";
-                    }
-                    {
-                      name = "Oasis";
-                      url = "https://oasis.ugent.be/oasis-web/inbox/home?0";
-                    }
-                  ];
-                }
-                {
-                  name = "Framework";
-                  url = "https://frame.work";
-                }
-              ];
-            };
             settings = {
               "browser.tabs.warnOnClose" = false;
-              "ui.systemUsesDarkTheme" = 1;
+              "privacy.sanitize.sanitizeOnShutdown" = false;
+              "privacy.clearOnShutdown.cookies" = false;
+              "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
             };
           };
         };

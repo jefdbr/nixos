@@ -11,7 +11,6 @@
         unzip
         docker-compose
         xwayland-satellite
-        (firefox.override { nativeMessagingHosts = [ passff-host ]; })
         nautilus
         trash-cli
         shfmt
