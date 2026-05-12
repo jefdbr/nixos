@@ -1,15 +1,13 @@
-{ inputs, ... }:
+{ ... }:
 {
-  flake.nixosModules.zen =
+  flake.nixosModules.librewolf =
     { pkgs, ... }:
     {
       home-manager.users.jeffrey = {
-        imports = [ inputs.zen-browser.homeModules.beta ];
-
-        programs.zen-browser = {
+        programs.firefox = {
           enable = true;
+          package = pkgs.librewolf;
           nativeMessagingHosts = [ pkgs.passff-host ];
-
           policies = {
             DontCheckDefaultBrowser = true;
             OfferToSaveLogins = false;
@@ -19,7 +17,6 @@
               Cryptomining = true;
               Fingerprinting = true;
             };
-
             ExtensionSettings = {
               "uBlock0@raymondhill.net" = {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
@@ -39,8 +36,8 @@
               };
             };
           };
-
           profiles.default = {
+            isDefault = true;
             bookmarks = {
               force = true;
               settings = [
@@ -63,7 +60,6 @@
                 }
               ];
             };
-
             settings = {
               "browser.tabs.warnOnClose" = false;
               "ui.systemUsesDarkTheme" = 1;
