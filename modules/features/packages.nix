@@ -32,6 +32,8 @@
           aider-chat
 
           # Wayland / desktop
+          xdg-desktop-portal
+          xdg-desktop-portal-gnome
           wayfreeze
           grim
           slurp
@@ -43,6 +45,8 @@
           wl-clipboard
           gnome-system-monitor
           seahorse
+          wl-mirror
+          spotify
 
           # Qt / KDE
           kdePackages.qttools

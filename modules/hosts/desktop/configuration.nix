@@ -28,6 +28,7 @@
         self.nixosModules.networking
         self.nixosModules.calendar
         self.nixosModules.gaming
+        self.nixosModules.zen
       ];
 
       networking.hostName = "desktop";

@@ -22,7 +22,10 @@
             VISUAL = "vim";
           };
 
-          sessionPath = [ "$HOME/.config/emacs/bin" ];
+          sessionPath = [
+            "$HOME/.config/emacs/bin"
+            "$HOME/.local/bin"
+          ];
 
           file.".config/gtk-3.0/bookmarks".text = ''
             sftp://home-server home-server

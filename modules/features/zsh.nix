@@ -39,7 +39,7 @@
           cdi = "zi";
           rebuild = "nh os switch";
           update = "nh os switch --update";
-          clean = "nix-collect-garbage -d && nix store optimise";
+          clean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3 && sudo nix-collect-garbage && nix-collect-garbage -d && nix store optimise";
         };
 
         history = {
