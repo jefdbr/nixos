@@ -15,7 +15,6 @@
         self.nixosModules.core
         self.nixosModules.desktop-services
         self.nixosModules.noctalia
-        self.nixosModules.noctalia-v5
         self.nixosModules.theme
         self.nixosModules.packages
         self.nixosModules.zsh

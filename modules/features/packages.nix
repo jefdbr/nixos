@@ -41,7 +41,6 @@
           mpv
           fuzzel
           hyprpolkitagent
-          wl-clip-persist
           wl-clipboard
           gnome-system-monitor
           seahorse

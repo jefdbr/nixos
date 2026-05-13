@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.nixosModules.home-manager =
     { ... }:
@@ -7,9 +7,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "backup";
-        sharedModules = [
-          inputs.noctalia.homeModules.default
-        ];
       };
 
       home-manager.users.jeffrey = {

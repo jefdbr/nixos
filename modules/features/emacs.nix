@@ -38,6 +38,10 @@
           zstd
           editorconfig-core-c
           sqlite
+          vips
+          ffmpegthumbnailer
+          mediainfo
+          p7zip
           texlive.combined.scheme-full
           (aspellWithDicts (
             ds: with ds; [

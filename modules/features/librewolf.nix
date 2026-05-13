@@ -4,14 +4,14 @@
     { pkgs, ... }:
     {
       home-manager.users.jeffrey = {
-        home.sessionVariables = {
-          MOZ_ENABLE_WAYLAND = "1";
-        };
-
         programs.firefox = {
           enable = true;
           package = pkgs.librewolf;
-          nativeMessagingHosts = [ pkgs.passff-host ];
+          nativeMessagingHosts = [
+            (pkgs.passff-host.override {
+              pass = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
+            })
+          ];
           policies = {
             DontCheckDefaultBrowser = true;
             OfferToSaveLogins = false;
