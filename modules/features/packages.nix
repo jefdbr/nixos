@@ -1,9 +1,13 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.packages =
     { pkgs, ... }:
     {
       home-manager.users.jeffrey = {
+        imports = [
+          inputs.nix-index-database.hmModules.nix-index
+        ];
+
         home.packages = with pkgs; [
           # CLI tools
           file
@@ -78,6 +82,7 @@
 
         programs.fzf.enable = true;
         programs.vscode.enable = true;
+        programs.nix-index-database.comma.enable = true;
       };
     };
 }
