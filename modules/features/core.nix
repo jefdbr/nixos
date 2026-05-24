@@ -19,6 +19,7 @@
         jq
         python3
         ps_mem
+        btop
       ];
 
       virtualisation.docker = {

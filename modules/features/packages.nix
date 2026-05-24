@@ -22,6 +22,7 @@
           shellcheck
           bat
           dust
+          bitwarden-cli
 
           # Dev tooling
           nodejs
@@ -44,9 +45,7 @@
           swappy
           mpv
           fuzzel
-          hyprpolkitagent
           wl-clipboard
-          gnome-system-monitor
           seahorse
           wl-mirror
           spotify
