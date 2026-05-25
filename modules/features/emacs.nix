@@ -26,9 +26,9 @@
             ];
         };
 
-        # Doom Emacs dependencies (LSPs and common tools are in packages.nix)
         home.packages = with pkgs; [
           cmake
+          gcc
           libtool
           gnumake
           binutils
@@ -48,6 +48,18 @@
               nl
             ]
           ))
+          nodejs
+          typescript-language-server
+          vscode-langservers-extracted
+          clang-tools
+          ruff
+          pyright
+          texlab
+          nixd
+          nil
+          tree-sitter
+          shellcheck
+          statix
         ];
 
         home.sessionPath = [

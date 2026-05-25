@@ -37,11 +37,6 @@
         home.file.".steam/root/compatibilitytools.d/proton-cachyos".source = proton-cachyos-bin;
       };
 
-      services.scx = {
-        enable = true;
-        scheduler = "scx_lavd";
-      };
-
       programs = {
         gamemode.enable = true;
         gamescope.enable = true;

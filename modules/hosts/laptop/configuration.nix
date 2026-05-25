@@ -13,10 +13,8 @@
         self.nixosModules.boot
         self.nixosModules.locale
         self.nixosModules.core
-        self.nixosModules.desktop-services
-        self.nixosModules.noctalia
+        self.nixosModules.desktop-config
         self.nixosModules.theme
-        self.nixosModules.packages
         self.nixosModules.zsh
         self.nixosModules.kitty
         self.nixosModules.emacs
