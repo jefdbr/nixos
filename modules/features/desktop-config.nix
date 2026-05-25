@@ -72,6 +72,7 @@
           mpv
           fuzzel
           wl-clipboard
+          wtype
           seahorse
           wl-mirror
           spotify
