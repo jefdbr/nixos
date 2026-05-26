@@ -64,7 +64,6 @@
 
         home.sessionPath = [
           "$HOME/.config/emacs/bin"
-          "$HOME/.local/bin"
         ];
 
         xdg.desktopEntries."emacsclient" = {
