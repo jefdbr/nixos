@@ -9,6 +9,7 @@
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
       services = {
+        getty.autologinUser = "jeffrey";
         printing.enable = true;
         avahi = {
           enable = true;
