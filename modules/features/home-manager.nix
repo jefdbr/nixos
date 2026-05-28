@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   flake.nixosModules.home-manager =
     { ... }:
@@ -15,8 +15,8 @@
 
           sessionVariables = {
             XDG_SESSION_TYPE = "wayland";
-            EDITOR = "vim";
-            VISUAL = "vim";
+            EDITOR = lib.mkForce "vim";
+            VISUAL = lib.mkForce "vim";
           };
 
           sessionPath = [

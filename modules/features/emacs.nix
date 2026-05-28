@@ -26,6 +26,14 @@
             ];
         };
 
+        services.emacs = {
+          enable = true;
+          package = pkgs.emacs-pgtk;
+          client.enable = true;
+          defaultEditor = true;
+          startWithUserSession = "graphical";
+        };
+
         home.packages = with pkgs; [
           cmake
           gcc
@@ -66,8 +74,8 @@
           "$HOME/.config/emacs/bin"
         ];
 
-        xdg.desktopEntries."emacsclient" = {
-          name = "Emacs (Client)";
+        xdg.desktopEntries."emacs" = {
+          name = "Emacs";
           noDisplay = true;
         };
         xdg.desktopEntries."emacsclient-mail" = {

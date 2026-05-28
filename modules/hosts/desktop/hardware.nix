@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.desktopHardware =
     {
@@ -12,6 +12,9 @@
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
       ];
+
+      nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
+      boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-zen4;
 
       boot.initrd.availableKernelModules = [
         "xhci_pci"
