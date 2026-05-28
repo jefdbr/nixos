@@ -76,7 +76,7 @@
 
         xdg.desktopEntries."emacs" = {
           name = "Emacs";
-          noDisplay = true;
+          noDisplay = false;
         };
         xdg.desktopEntries."emacsclient-mail" = {
           name = "Emacs (Client) Mail";
