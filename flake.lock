@@ -280,9 +280,7 @@
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
-        "niri-unstable": [
-          "niri-package"
-        ],
+        "niri-unstable": "niri-unstable",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -304,27 +302,6 @@
         "type": "github"
       }
     },
-    "niri-package": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1778590070,
-        "narHash": "sha256-uLtPAKWHrJkqaoAFj3YnlLTFV1J0RN0YwZSpIwLo+lw=",
-        "owner": "urayde",
-        "repo": "niri",
-        "rev": "43ce1227313161d282b706e1ec8ee1e9b8575f8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "urayde",
-        "repo": "niri",
-        "type": "github"
-      }
-    },
     "niri-stable": {
       "flake": false,
       "locked": {
@@ -338,6 +315,22 @@
       "original": {
         "owner": "YaLTeR",
         "ref": "v25.08",
+        "repo": "niri",
+        "type": "github"
+      }
+    },
+    "niri-unstable": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779987025,
+        "narHash": "sha256-kiuCI22PO46DUV9+3xNod7XulzrjKPwYgsmsnOs8Q98=",
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "rev": "9bd6c2cadda26450d435785815a634c320127a1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "YaLTeR",
         "repo": "niri",
         "type": "github"
       }
@@ -516,33 +509,11 @@
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "niri": "niri",
-        "niri-package": "niri-package",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
         "stylix": "stylix"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "niri-package",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757989933,
-        "narHash": "sha256-9cpKYWWPCFhgwQTww8S94rTXgg8Q8ydFv9fXM6I8xQM=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "8249aa3442fb9b45e615a35f39eca2fe5510d7c3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
       }
     },
     "stylix": {
