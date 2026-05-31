@@ -15,8 +15,8 @@
 
           sessionVariables = {
             XDG_SESSION_TYPE = "wayland";
-            EDITOR = lib.mkForce "vim";
-            VISUAL = lib.mkForce "vim";
+            EDITOR = lib.mkForce "emacsclient -nw";
+            VISUAL = lib.mkForce "emacsclient -nw";
           };
 
           sessionPath = [

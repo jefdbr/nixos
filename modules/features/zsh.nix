@@ -17,6 +17,18 @@
           file
         ];
 
+        programs.atuin = {
+          enable = true;
+          enableZshIntegration = false;
+          settings = {
+            auto_sync = false;
+            update_check = false;
+            style = "compact";
+            dialect = "uk";
+            search_mode = "fuzzy";
+          };
+        };
+
         programs.zsh = {
           enable = true;
           enableCompletion = true;
@@ -38,8 +50,9 @@
           };
 
           initContent = ''
-            export EDITOR=vim
-            export VISUAL=vim
+            export EDITOR="emacsclient -nw"
+            export VISUAL="emacsclient -nw"
+            eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
           '';
 
           shellAliases = {
@@ -51,12 +64,13 @@
             cdi = "zi";
             rebuild = "nh os switch";
             update = "nh os switch --update";
-            clean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3 && sudo nix-collect-garbage && nix-collect-garbage -d && nix store optimise";
+            clean = "nh clean all --keep 3 --no-gcroots";
           };
 
           history = {
             size = 10000;
             ignoreDups = true;
+            share = true;
           };
         };
       };

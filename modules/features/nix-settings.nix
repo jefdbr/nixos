@@ -3,6 +3,7 @@
   flake.nixosModules.nix-settings =
     { ... }:
     {
+      nix.optimise.automatic = true;
       nixpkgs.config.allowUnfree = true;
 
       nix.settings = {
