@@ -23,7 +23,6 @@
       self.nixosModules.networking
       self.nixosModules.calendar
       self.nixosModules.gaming
-      self.nixosModules.librewolf
       self.nixosModules.helium
       {
         networking.hostName = "desktop";

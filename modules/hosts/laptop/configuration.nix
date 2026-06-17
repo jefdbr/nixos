@@ -22,7 +22,6 @@
       self.nixosModules.fastfetch
       self.nixosModules.networking
       self.nixosModules.calendar
-      self.nixosModules.librewolf
       {
         networking.hostName = "laptop";
         system.stateVersion = "25.11";

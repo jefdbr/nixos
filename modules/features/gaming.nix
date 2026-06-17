@@ -24,6 +24,7 @@
     {
       environment.systemPackages = with pkgs; [
         mangohud
+        bolt-launcher
         (heroic.override {
           extraPkgs =
             pkgs': with pkgs'; [
