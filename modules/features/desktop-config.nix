@@ -27,7 +27,21 @@
           alsa.enable = true;
           alsa.support32Bit = true;
           pulse.enable = true;
-          wireplumber.enable = true;
+          wireplumber = {
+            enable = true;
+            extraConfig."90-prevent-helium-mic-adjust" = {
+              "access.rules" = [
+                {
+                  matches = [ { "application.process.binary" = "helium"; } ];
+                  actions = {
+                    update-props = {
+                      "default_permissions" = "rx";
+                    };
+                  };
+                }
+              ];
+            };
+          };
         };
       };
 
@@ -35,13 +49,7 @@
         enable = true;
         extraPortals = [
           pkgs.xdg-desktop-portal-gnome
-          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
         ];
-        config = {
-          niri.default = "gnome";
-          hyprland.default = "hyprland";
-          common.default = "gnome";
-        };
       };
 
       programs = {
@@ -57,7 +65,6 @@
         };
 
         gpu-screen-recorder.enable = true;
-        #noctalia-greeter.enable = true;
       };
 
       home-manager.users.jeffrey =
@@ -87,21 +94,19 @@
 
           stylix.targets.niri.enable = false;
           systemd.user.startServices = "sd-switch";
-          # programs.zsh.profileExtra = ''
-          #   if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then exec niri-session -l; fi
-          # '';
+          programs.zsh.profileExtra = ''
+            if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then exec niri-session -l; fi
+          '';
 
           home.packages = with pkgs; [
             inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
             swappy
             mpv
-            fuzzel
             wl-clipboard
+            wl-mirror
             wtype
             seahorse
-            wl-mirror
             spotify
-            vesktop
             libnotify
             (pkgs.writeShellApplication {
               name = "ns";

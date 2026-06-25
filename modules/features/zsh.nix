@@ -53,7 +53,7 @@
             fi
           '';
           shellAliases = {
-            e = "emacsclient -nw";
+            e = "emacsclient -nw -a ''";
             o = "xdg-open";
             ls = "eza --icons=always --group-directories-first";
             cat = "bat --style=plain --paging=never";

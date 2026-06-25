@@ -132,49 +132,40 @@ hl.window_rule({
   no_focus = true,
 })
 
--- Opacity + blur for kitty and Nautilus
 for _, class in ipairs({ "kitty", "org.gnome.Nautilus" }) do
   hl.window_rule({
     match            = { class = class },
-    -- active_opacity   = 0.85,
-    -- inactive_opacity = 0.85,
+    opacity = "0.85",
   })
 end
 
--- Float at 50x66% for these apps
 local float_sized = {
   { class = "org.gnome.Nautilus" },
   { class = "dev.noctalia.Noctalia.Settings" },
-  -- { class = "steam", exclude = { title = "^[Ss]team$" } },
 }
 for _, rule in ipairs(float_sized) do
   hl.window_rule({
     match   = { class = rule.class },
-    -- exclude = rule.exclude,
     float   = true,
-    size = { "50%", "66%" },
+    size  = "monitor_w*0.5 monitor_h*0.66",
   })
 end
 
--- Float only
 for _, class in ipairs({"net-runelite-client-RuneLite" }) do
   hl.window_rule({ match = { class = class }, float = true })
 end
-
--- Steam: no border on sub-windows
--- hl.window_rule({
---   match       = { class = "steam" },
---   -- exclude     = { title = "^[Ss]team$" },
---   border_size = 0,
--- })
 
 -- ══════════════════════════════════════════
 --  LAYER RULES
 -- ══════════════════════════════════════════
 
 hl.layer_rule({
-  match = { namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|osd)$" },
-  blur  = true,
+  name = "noctalia",
+  match = {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|osd)$",
+  },
+  no_anim = true,
+  blur_popups = true,
 })
 
 -- ══════════════════════════════════════════
@@ -182,8 +173,7 @@ hl.layer_rule({
 -- ══════════════════════════════════════════
 
 local function toggle_layout()
-  local current = hl.get_config("general.layout")
-  if current == "scrolling" then
+  if hl.get_config("general.layout") == "scrolling" then
     hl.config({ general = { layout = "dwindle" } })
   else
     hl.config({ general = { layout = "scrolling" } })
@@ -215,7 +205,6 @@ hl.bind(M .. " + BackSpace",        hl.dsp.exec_cmd("noctalia msg panel-toggle s
 hl.bind(M .. " + W",                hl.dsp.window.float({ action = "toggle" }))
 hl.bind("CTRL + ALT + Return",      hl.dsp.window.fullscreen())
 hl.bind("ALT + TAB",                hl.dsp.exec_cmd("noctalia msg window-switcher"))
--- hl.bind(M .. " + Z",                hl.dsp.layout("expand_to_screen"))
 hl.bind(M .. " + TAB",              toggle_layout)
 
 -- App launchers
@@ -226,7 +215,7 @@ hl.bind(M .. " + A",         hl.dsp.exec_cmd("noctalia msg panel-toggle launcher
 hl.bind(M .. " + X",         hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
 hl.bind(M .. " + C",         hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
 hl.bind(M .. " + S",         hl.dsp.exec_cmd(
-  "grep '^Host ' ~/.ssh/config | grep -v '\\*' | awk '{print $2}' | fuzzel --dmenu | xargs -I{} kitty ssh {}"
+  "grep '^Host ' ~/.ssh/config | grep -v '\\*' | awk '{print $2}' | noctalia dmenu | xargs -I{} kitty ssh {}"
 ))
 
 -- Screenshots
@@ -237,7 +226,7 @@ hl.bind(M .. " + ALT + P", function()
   hl.exec_cmd(
     "sh -c 'wl-mirror --fullscreen-output " ..
     "$(hyprctl -j monitors | jq -r \".[].name\" | " ..
-    "grep -v $(hyprctl -j activeworkspace | jq -r \".monitor\") | fuzzel --dmenu) " ..
+    "grep -v $(hyprctl -j activeworkspace | jq -r \".monitor\") | noctalia dmenu ) " ..
     "$(hyprctl -j activeworkspace | jq -r \".monitor\")'"
   )
 end, { repeat_key = false })
