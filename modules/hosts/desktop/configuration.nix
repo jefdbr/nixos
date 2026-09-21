@@ -22,8 +22,8 @@
       self.nixosModules.fastfetch
       self.nixosModules.networking
       self.nixosModules.calendar
-      self.nixosModules.gaming
       self.nixosModules.helium
+      self.nixosModules.gaming
       {
         networking.hostName = "desktop";
         system.stateVersion = "25.11";
