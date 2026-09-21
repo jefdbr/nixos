@@ -49,7 +49,7 @@
           ffmpegthumbnailer
           mediainfo
           p7zip
-          texlive.combined.scheme-full
+          texliveSmall
           (aspellWithDicts (
             ds: with ds; [
               en
