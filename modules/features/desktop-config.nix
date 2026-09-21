@@ -53,6 +53,7 @@
       };
 
       programs = {
+        dconf.enable = true;
         kdeconnect.enable = true;
         niri = {
           enable = true;

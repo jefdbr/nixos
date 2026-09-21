@@ -71,37 +71,67 @@
         };
       };
 
-      # KDE color config
-      home-manager.users.jeffrey.xdg.configFile."kdeglobals".text = ''
-        [General]
-        ColorScheme=Stylix
+      home-manager.users.jeffrey = {
+        # gtk.cursorTheme = {
+        #   name = "Bibata-Modern-Ice";
+        #   package = pkgs.bibata-cursors;
+        #   size = 24;
+        # };
 
-        [KDE]
-        widgetStyle=Breeze
+        # home.pointerCursor = {
+        #   name = "Bibata-Modern-Ice";
+        #   package = pkgs.bibata-cursors;
+        #   size = 24;
+        #   gtk.enable = true;
+        #   x11.enable = true;
+        # };
 
-        [Colors:View]
-        BackgroundNormal=${hexToRgb c.base00}
-        ForegroundNormal=${hexToRgb c.base05}
+        # # Write dconf cursor values directly in case that's also broken
+        # dconf.settings."org/gnome/desktop/interface" = {
+        #   cursor-theme = "Bibata-Modern-Ice";
+        #   cursor-size = 24;
+        # };
 
-        [Colors:Window]
-        BackgroundNormal=${hexToRgb c.base01}
-        ForegroundNormal=${hexToRgb c.base05}
+        # services.xsettingsd = {
+        #   enable = true;
+        #   settings = {
+        #     "Gtk/CursorThemeName" = "Bibata-Modern-Ice";
+        #     "Gtk/CursorThemeSize" = 24;
+        #   };
+        # };
 
-        [Colors:Button]
-        BackgroundNormal=${hexToRgb c.base02}
-        ForegroundNormal=${hexToRgb c.base05}
+        xdg.configFile."kdeglobals".text = ''
+          [General]
+          ColorScheme=Stylix
 
-        [Colors:Selection]
-        BackgroundNormal=${hexToRgb c.base0D}
-        ForegroundNormal=${hexToRgb c.base07}
+          [KDE]
+          widgetStyle=Breeze
 
-        [Colors:Tooltip]
-        BackgroundNormal=${hexToRgb c.base01}
-        ForegroundNormal=${hexToRgb c.base05}
+          [Colors:View]
+          BackgroundNormal=${hexToRgb c.base00}
+          ForegroundNormal=${hexToRgb c.base05}
 
-        [Colors:Complementary]
-        BackgroundNormal=${hexToRgb c.base00}
-        ForegroundNormal=${hexToRgb c.base05}
-      '';
+          [Colors:Window]
+          BackgroundNormal=${hexToRgb c.base01}
+          ForegroundNormal=${hexToRgb c.base05}
+
+          [Colors:Button]
+          BackgroundNormal=${hexToRgb c.base02}
+          ForegroundNormal=${hexToRgb c.base05}
+
+          [Colors:Selection]
+          BackgroundNormal=${hexToRgb c.base0D}
+          ForegroundNormal=${hexToRgb c.base07}
+
+          [Colors:Tooltip]
+          BackgroundNormal=${hexToRgb c.base01}
+          ForegroundNormal=${hexToRgb c.base05}
+
+          [Colors:Complementary]
+          BackgroundNormal=${hexToRgb c.base00}
+          ForegroundNormal=${hexToRgb c.base05}
+        '';
+      };
+
     };
 }
