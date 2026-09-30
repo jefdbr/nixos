@@ -1,0 +1,278 @@
+# ══════════════════════════════════════════
+#  Umbriel config, ported from assets/niri.kdl
+#  Reference: https://docs.noctalia.dev/umbriel/
+#  Check edits with: umbriel config validate
+# ══════════════════════════════════════════
+
+# ══════════════════════════════════════════
+#  GENERAL / AUTOSTART
+# ══════════════════════════════════════════
+
+[general]
+autostart = ["noctalia"]
+# niri: hotkey-overlay skip-at-startup
+show_cheatsheet = false
+# niri: honor-xdg-activation-with-invalid-serial
+# Lets Noctalia notification actions focus their window.
+focus_on_activate = true
+
+[environment]
+XKB_DEFAULT_LAYOUT = "be"
+
+# ══════════════════════════════════════════
+#  INPUT
+# ══════════════════════════════════════════
+
+[input.keyboard]
+layout = "be"
+numlock_toggle = true
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+scroll_factor = 1.0
+# niri's "drag" and "drag-lock" have no Umbriel equivalent (libinput default is used)
+
+[input.mouse]
+accel_profile = "flat"
+
+# niri: focus-follows-mouse max-scroll-amount="0%"
+[input.focus]
+follows_mouse = true
+follows_mouse_max_scroll = 0.0
+
+[input.cursor]
+theme = "Bibata-Modern-Ice"
+size = 24
+
+# ══════════════════════════════════════════
+#  OUTPUTS / MONITORS
+#  Names are "<make> <model> <serial>". Umbriel may spell them slightly
+#  differently from niri: check the "Config name" line of `umbriel outputs`.
+# ══════════════════════════════════════════
+
+[output."HP Inc. OMEN 27qs CNC40417HS"]
+mode = "2560x1440@239.998"
+scale = 1.0
+position = [0, 0]
+
+[output."BNQ ZOWIE XL LCD B4K01146SL0"]
+mode = "1920x1080@60"
+scale = 1.0
+position = [-1920, 180]
+
+[output."BOE 0x0A06 Unknown"]
+mode = "1920x1080"
+scale = 1.2
+position = [0, 0]
+
+# ══════════════════════════════════════════
+#  LAYOUT
+# ══════════════════════════════════════════
+
+[layout]
+mode = "scrolling"
+gap = 4
+# niri: preset-column-widths (Umbriel shares one list for widths and heights)
+extent_presets = [0.33333, 0.5, 0.66667, 1.0]
+
+[layout.scrolling]
+# niri: default-column-width { proportion 1.0; }
+default_extent_fraction = 1.0
+
+[overview]
+zoom = 0.5
+workspace_wallpaper = false
+background_blur = false
+
+# ══════════════════════════════════════════
+#  APPEARANCE
+# ══════════════════════════════════════════
+
+[appearance]
+prefer_no_csd = true
+# niri: border off + focus-ring width 2 -> Umbriel only has one border
+border_width = 2
+corner_radius = 10
+
+[appearance.shadow]
+enabled = false
+
+[appearance.blur]
+radius = 3
+
+[colors.border]
+focused = "#ffffff60"
+unfocused = "#ffffff00"
+
+# ══════════════════════════════════════════
+#  LAYER RULES
+# ══════════════════════════════════════════
+
+[[layer_rule]]
+match.namespace = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+blur = true
+blur_ignore_alpha = 0.5
+blur_popups = true
+blur_optimized = false
+
+# ══════════════════════════════════════════
+#  WINDOW RULES  (later rules override earlier ones)
+# ══════════════════════════════════════════
+
+[[window_rule]]
+match.app_id = "^(kitty|Nautilus|org[.]gnome[.]Nautilus)$"
+opacity = 0.85
+blur = true
+# niri: xray false -> blur what is actually behind the window
+blur_optimized = false
+
+# Floating utilities (steam: everything except the main window)
+[[window_rule]]
+match.app_id = "^(Nautilus|org[.]gnome[.]Nautilus|dev[.]noctalia[.]Noctalia[.]Settings)$"
+default_floating = true
+default_floating_size = { width = 0.5, height = 0.666 }
+
+[[window_rule]]
+match.app_id = "^steam$"
+match.title = "^(?![Ss]team$)"
+default_floating = true
+default_floating_size = { width = 0.5, height = 0.666 }
+border_width = 0
+
+[[window_rule]]
+match.app_id = "^dev[.]noctalia[.]Noctalia$"
+default_floating = true
+default_floating_size_px = { width = 1020, height = 900 }
+
+[[window_rule]]
+match.app_id = "^dev[.]noctalia[.]UmbrielSharePicker$"
+default_floating = true
+default_floating_size_px = { width = 800, height = 600 }
+
+[[window_rule]]
+match.app_id = "^net-runelite-client-RuneLite$"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^steam$"
+match.title = "^notificationtoasts_\\d+_desktop$"
+default_position = { x = 10, y = 10, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# Discord's "is sharing your screen" bar: tuck it away in the scratchpad
+[[window_rule]]
+match.title = "discord[.]com is sharing your screen[.]"
+border_width = 0
+
+[[window_rule]]
+match.title = "^(Picture-in-Picture|Picture in picture)$"
+default_floating = true
+default_position = { x = 20, y = 20, anchor = "bottom_right" }
+
+# ══════════════════════════════════════════
+#  KEY BINDINGS
+#  Defining [keybinds] replaces all of Umbriel's built-in binds.
+#  Mod = Super (Alt when running nested inside another compositor).
+# ══════════════════════════════════════════
+
+[keybinds]
+# Vim arrows via wtype
+# (niri's AltGr/Mod5 variants are left out: Umbriel only knows Shift/Ctrl/Alt/Super)
+"Alt+H" = "spawn:wtype -k Left"
+"Alt+L" = "spawn:wtype -k Right"
+"Alt+J" = "spawn:wtype -k Down"
+"Alt+K" = "spawn:wtype -k Up"
+
+# Window / session
+"Mod+Q" = { action = "window-close", repeat = false }
+"Mod+Ctrl+Shift+Q" = { action = '''spawn:kill -9 "$(umbriel windows --json | jq '.[] | select(.active) | .pid')"''', repeat = false }
+"Mod+BackSpace" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
+"Mod+W" = { action = "window-toggle-floating", repeat = false }
+"Ctrl+Alt+Return" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+Z" = { action = "window-toggle-maximize", repeat = false }
+# Escape hatch when a game/remote desktop grabs all shortcuts
+"Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+"Alt+Tab" = { action = "spawn:noctalia msg window-switcher" }
+
+# App launchers
+"Mod+T" = { action = "spawn:kitty", repeat = false }
+"Mod+F" = { action = "spawn:helium", repeat = false }
+"Mod+E" = { action = "spawn:emacsclient -c -a ''", repeat = false }
+"Mod+A" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
+"Mod+X" = { action = "spawn:noctalia msg panel-toggle wallpaper", repeat = false }
+"Mod+C" = { action = "spawn:noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+S" = { action = '''spawn:grep '^Host ' ~/.ssh/config | grep -v '\*' | awk '{print $2}' | noctalia dmenu -p 'Search servers...' | xargs -I{} kitty ssh {}''', repeat = false }
+
+# Media / brightness
+"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
+"XF86AudioPause" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
+"XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
+"XF86AudioPrev" = { action = "spawn:noctalia msg media previous", allow_when_locked = true }
+
+"Mod+P" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Mod+Shift+P" = { action = "spawn:noctalia msg screenshot-annotate", repeat = false }
+"Mod+Alt+P" = { action = '''spawn:cur="$(umbriel workspaces --json | jq -r '.[] | select(.focused) | .output')"; wl-mirror --fullscreen-output "$(umbriel outputs --json | jq -r '.[] | select(.enabled) | .name' | grep -vx "$cur" | noctalia dmenu -p 'Mirror current screen to screen...')" "$cur"''', repeat = false }
+
+# Focus navigation
+"Mod+H" = "window-focus-left"
+"Mod+Left" = "window-focus-left"
+"Mod+L" = "window-focus-right"
+"Mod+Right" = "window-focus-right"
+"Mod+K" = "window-focus-up"
+"Mod+Up" = "window-focus-up"
+"Mod+J" = "window-focus-down"
+"Mod+Down" = "window-focus-down"
+
+# Workspace / monitor navigation
+"Mod+Ctrl+H" = "output-focus-left"
+"Mod+Ctrl+Left" = "output-focus-left"
+"Mod+Ctrl+L" = "output-focus-right"
+"Mod+Ctrl+Right" = "output-focus-right"
+"Mod+Ctrl+K" = "workspace-previous"
+"Mod+Ctrl+Up" = "workspace-previous"
+"Mod+Ctrl+J" = "workspace-next"
+"Mod+Ctrl+Down" = "workspace-next"
+"Mod+O" = { action = "overview-toggle", repeat = false }
+
+# Move column to monitor / workspace
+"Mod+Ctrl+Alt+H" = "column-move-to-output-left"
+"Mod+Ctrl+Alt+Left" = "column-move-to-output-left"
+"Mod+Ctrl+Alt+L" = "column-move-to-output-right"
+"Mod+Ctrl+Alt+Right" = "column-move-to-output-right"
+"Mod+Ctrl+Alt+K" = "column-move-to-workspace-previous"
+"Mod+Ctrl+Alt+Up" = "column-move-to-workspace-previous"
+"Mod+Ctrl+Alt+J" = "column-move-to-workspace-next"
+"Mod+Ctrl+Alt+Down" = "column-move-to-workspace-next"
+
+# Move windows
+"Mod+Alt+H" = "column-move-left"
+"Mod+Alt+Left" = "column-move-left"
+"Mod+Alt+L" = "column-move-right"
+"Mod+Alt+Right" = "column-move-right"
+"Mod+Alt+K" = "window-move-up"
+"Mod+Alt+Up" = "window-move-up"
+"Mod+Alt+J" = "window-move-down"
+"Mod+Alt+Down" = "window-move-down"
+
+# Consume / expel
+"Mod+Alt+Shift+H" = "window-consume-or-expel-left"
+"Mod+Alt+Shift+Left" = "window-consume-or-expel-left"
+"Mod+Alt+Shift+L" = "window-consume-or-expel-right"
+"Mod+Alt+Shift+Right" = "window-consume-or-expel-right"
+"Mod+Alt+Shift+K" = "window-move-up"
+"Mod+Alt+Shift+Up" = "window-move-up"
+"Mod+Alt+Shift+J" = "window-move-down"
+"Mod+Alt+Shift+Down" = "window-move-down"
+
+# Column / window sizing
+"Mod+R" = "window-cycle-primary-extent"
+"Mod+Shift+R" = "window-cycle-secondary-extent"
+"Mod+Minus" = "window-modify-primary-extent:-0.1"
+"Mod+Equal" = "window-modify-primary-extent:0.1"

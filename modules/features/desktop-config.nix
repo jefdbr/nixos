@@ -6,12 +6,23 @@
       imports = [
         inputs.niri.nixosModules.niri
         inputs.noctalia-greeter.nixosModules.default
-        inputs.hyprland.nixosModules.default
+        inputs.umbriel.nixosModules.default
       ];
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
       services = {
-        getty.autologinUser = "jeffrey";
+        displayManager.noctalia-greeter = {
+          enable = true;
+          passwordless-sync-users = [ "jeffrey" ];
+          cursorTheme.package = pkgs.bibata-cursors;
+          settings = {
+            user.default = "jeffrey";
+            cursor = {
+              theme = "Bibata-Modern-Ice";
+              size = 24;
+            };
+          };
+        };
         printing.enable = true;
         avahi = {
           enable = true;
@@ -60,10 +71,7 @@
           package = pkgs.niri;
         };
 
-        hyprland = {
-          enable = true;
-          package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        };
+        umbriel.enable = true;
 
         gpu-screen-recorder.enable = true;
       };
@@ -75,11 +83,11 @@
             inputs.nix-index-database.homeModules.nix-index
           ];
 
-          xdg.configFile."hypr/hyprland.lua".source =
-            config.lib.file.mkOutOfStoreSymlink "/etc/nixos/assets/hyprland.lua";
-
           xdg.configFile."niri/config.kdl".source =
             config.lib.file.mkOutOfStoreSymlink "/etc/nixos/assets/niri.kdl";
+
+          xdg.configFile."umbriel/config.toml".source =
+            config.lib.file.mkOutOfStoreSymlink "/etc/nixos/assets/umbriel.toml";
 
           services.gpg-agent = {
             enable = true;
@@ -95,9 +103,6 @@
 
           stylix.targets.niri.enable = false;
           systemd.user.startServices = "sd-switch";
-          programs.zsh.profileExtra = ''
-            if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then exec niri-session -l; fi
-          '';
 
           home.packages = with pkgs; [
             inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
