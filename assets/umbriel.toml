@@ -61,10 +61,9 @@ mode = "1920x1080@60"
 scale = 1.0
 position = [-1920, 180]
 
-[output."BOE 0x0A06 Unknown"]
-mode = "1920x1080"
-scale = 1.2
-position = [0, 0]
+[output.eDP-1]
+mode = "2880x1920@120"
+scale = 2.0
 
 # ══════════════════════════════════════════
 #  LAYOUT
@@ -209,8 +208,8 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
 "XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
 "XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
-"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
-"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up eDP-1 1", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down eDP-1 1", allow_when_locked = true }
 "XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
 "XF86AudioPause" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
 "XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
