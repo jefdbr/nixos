@@ -10,6 +10,7 @@
         "media"
         "video"
         "render"
+        "user-with-access-to-virtualbox"
       ];
       shell = pkgs.zsh;
       group = "jeffrey";

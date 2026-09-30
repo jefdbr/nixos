@@ -27,9 +27,21 @@
         enable = true;
       };
 
+      virtualisation.virtualbox = {
+        host.enable = true;
+      };
+
       hardware.bluetooth.enable = true;
       security.rtkit.enable = true;
-      programs.nix-ld.enable = true;
+      programs.nix-ld = {
+        enable = true;
+        libraries = with pkgs; [
+          stdenv.cc.cc.lib
+          zlib
+          libGL
+          glib
+        ];
+      };
 
       security.pam.loginLimits = [
         {
@@ -43,6 +55,14 @@
       security.pam.services.login.enableGnomeKeyring = true;
 
       zramSwap.enable = true;
+
+      boot.loader.systemd-boot.consoleMode = "0";
+
+      console = {
+        earlySetup = true;
+        font = "ter-v32n";
+        packages = [ pkgs.terminus_font ];
+      };
 
       programs.nh = {
         enable = true;

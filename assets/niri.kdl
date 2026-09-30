@@ -20,7 +20,7 @@ input {
     touchpad {
         tap
         natural-scroll
-        scroll-factor 1.0
+        scroll-factor 0.5
         drag true
         drag-lock
     }
@@ -47,6 +47,11 @@ output "PNP(BNQ) ZOWIE XL LCD B4K01146SL0" {
     mode "1920x1080@60"
     scale 1
     position x=-1920 y=180
+}
+
+output "China Star Optoelectronics Technology Co., Ltd MND508ZB1-1 Unknown" {
+	mode "2880x1920@120.00"
+	scale 2.0
 }
 
 output "BOE 0x0A06 Unknown" {
@@ -109,7 +114,7 @@ hotkey-overlay {
   skip-at-startup
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 screenshot-path "/tmp/screenshot.png"
 
@@ -256,8 +261,8 @@ binds {
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
     XF86AudioMute         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up eDP-1 1"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down eDP-1 1"; }
     XF86AudioPlay         allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
     XF86AudioPause        allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
     XF86AudioNext         allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
