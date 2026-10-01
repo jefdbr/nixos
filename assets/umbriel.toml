@@ -1,19 +1,10 @@
 # ══════════════════════════════════════════
-#  Umbriel config, ported from assets/niri.kdl
-#  Reference: https://docs.noctalia.dev/umbriel/
-#  Check edits with: umbriel config validate
-# ══════════════════════════════════════════
-
-# ══════════════════════════════════════════
 #  GENERAL / AUTOSTART
 # ══════════════════════════════════════════
 
 [general]
 autostart = ["noctalia"]
-# niri: hotkey-overlay skip-at-startup
 show_cheatsheet = false
-# niri: honor-xdg-activation-with-invalid-serial
-# Lets Noctalia notification actions focus their window.
 focus_on_activate = true
 
 [environment]
@@ -31,12 +22,10 @@ numlock_toggle = true
 tap = true
 natural_scroll = true
 scroll_factor = 1.0
-# niri's "drag" and "drag-lock" have no Umbriel equivalent (libinput default is used)
 
 [input.mouse]
 accel_profile = "flat"
 
-# niri: focus-follows-mouse max-scroll-amount="0%"
 [input.focus]
 follows_mouse = true
 follows_mouse_max_scroll = 0.0
@@ -51,19 +40,8 @@ size = 24
 #  differently from niri: check the "Config name" line of `umbriel outputs`.
 # ══════════════════════════════════════════
 
-[output."HP Inc. OMEN 27qs CNC40417HS"]
-mode = "2560x1440@239.998"
-scale = 1.0
-position = [0, 0]
-
-[output."BNQ ZOWIE XL LCD B4K01146SL0"]
-mode = "1920x1080@60"
-scale = 1.0
-position = [-1920, 180]
-
-[output.eDP-1]
-mode = "2880x1920@120"
-scale = 2.0
+[include]
+files = ["outputs.toml"]
 
 # ══════════════════════════════════════════
 #  LAYOUT
@@ -72,11 +50,9 @@ scale = 2.0
 [layout]
 mode = "scrolling"
 gap = 4
-# niri: preset-column-widths (Umbriel shares one list for widths and heights)
 extent_presets = [0.33333, 0.5, 0.66667, 1.0]
 
 [layout.scrolling]
-# niri: default-column-width { proportion 1.0; }
 default_extent_fraction = 1.0
 
 [overview]
@@ -90,7 +66,6 @@ background_blur = false
 
 [appearance]
 prefer_no_csd = true
-# niri: border off + focus-ring width 2 -> Umbriel only has one border
 border_width = 2
 corner_radius = 10
 
@@ -160,11 +135,6 @@ default_position = { x = 10, y = 10, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
 
-# Discord's "is sharing your screen" bar: tuck it away in the scratchpad
-[[window_rule]]
-match.title = "discord[.]com is sharing your screen[.]"
-border_width = 0
-
 [[window_rule]]
 match.title = "^(Picture-in-Picture|Picture in picture)$"
 default_floating = true
@@ -177,8 +147,6 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 # ══════════════════════════════════════════
 
 [keybinds]
-# Vim arrows via wtype
-# (niri's AltGr/Mod5 variants are left out: Umbriel only knows Shift/Ctrl/Alt/Super)
 "Alt+H" = "spawn:wtype -k Left"
 "Alt+L" = "spawn:wtype -k Right"
 "Alt+J" = "spawn:wtype -k Down"
@@ -194,6 +162,7 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 # Escape hatch when a game/remote desktop grabs all shortcuts
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 "Alt+Tab" = { action = "spawn:noctalia msg window-switcher" }
+"Mod+Shift+T" = "workspace-set-layout:toggle"
 
 # App launchers
 "Mod+T" = { action = "spawn:kitty", repeat = false }
