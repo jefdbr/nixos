@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  lib,
+  ...
+}:
 {
   flake.nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
@@ -27,6 +32,17 @@
         networking.hostName = "laptop";
         system.stateVersion = "25.11";
         services.thermald.enable = true;
+        services.fwupd.enable = true;
+        services.fprintd.enable = true;
+      }
+      {
+        options.security.pam.services = lib.mkOption {
+          type = lib.types.attrsOf (
+            lib.types.submodule {
+              config.fprintAuth = lib.mkDefault false;
+            }
+          );
+        };
       }
     ];
   };

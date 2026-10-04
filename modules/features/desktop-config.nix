@@ -106,6 +106,8 @@
 
           home.packages = with pkgs; [
             inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+            bitwarden-cli
+            bitwarden-desktop
             swappy
             mpv
             wl-clipboard
@@ -114,14 +116,6 @@
             seahorse
             spotify
             libnotify
-            (pkgs.writeShellApplication {
-              name = "ns";
-              runtimeInputs = [
-                fzf
-                nix-search-tv
-              ];
-              text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-            })
           ];
         };
 

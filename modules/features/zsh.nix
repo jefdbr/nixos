@@ -46,11 +46,13 @@
           initContent = ''
             export EDITOR="emacsclient -nw"
             export VISUAL="emacsclient -nw"
-            eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
 
             if [[ -z "$INSIDE_EMACS" ]]; then
               source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
             fi
+
+
+            eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
           '';
           shellAliases = {
             e = "emacsclient -nw -a ''";

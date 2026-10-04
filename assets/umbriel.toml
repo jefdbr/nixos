@@ -98,7 +98,6 @@ blur_optimized = false
 match.app_id = "^(kitty|Nautilus|org[.]gnome[.]Nautilus)$"
 opacity = 0.85
 blur = true
-# niri: xray false -> blur what is actually behind the window
 blur_optimized = false
 
 # Floating utilities (steam: everything except the main window)
@@ -158,11 +157,10 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "Mod+BackSpace" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
 "Mod+W" = { action = "window-toggle-floating", repeat = false }
 "Ctrl+Alt+Return" = { action = "window-toggle-fullscreen", repeat = false }
-"Mod+Z" = { action = "window-toggle-maximize", repeat = false }
 # Escape hatch when a game/remote desktop grabs all shortcuts
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 "Alt+Tab" = { action = "spawn:noctalia msg window-switcher" }
-"Mod+Shift+T" = "workspace-set-layout:toggle"
+"Mod+Shift+L" = "workspace-set-layout:toggle"
 
 # App launchers
 "Mod+T" = { action = "spawn:kitty", repeat = false }
@@ -174,8 +172,8 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "Mod+S" = { action = '''spawn:grep '^Host ' ~/.ssh/config | grep -v '\*' | awk '{print $2}' | noctalia dmenu -p 'Search servers...' | xargs -I{} kitty ssh {}''', repeat = false }
 
 # Media / brightness
-"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
-"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up 1", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down 1", allow_when_locked = true }
 "XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
 "XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up eDP-1 1", allow_when_locked = true }
 "XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down eDP-1 1", allow_when_locked = true }
@@ -239,8 +237,11 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "Mod+Alt+Shift+J" = "window-move-down"
 "Mod+Alt+Shift+Down" = "window-move-down"
 
-# Column / window sizing
-"Mod+R" = "window-cycle-primary-extent"
-"Mod+Shift+R" = "window-cycle-secondary-extent"
-"Mod+Minus" = "window-modify-primary-extent:-0.1"
-"Mod+Equal" = "window-modify-primary-extent:0.1"
+"Mod+M" = { action = "window-toggle-maximize", repeat = false }
+
+"Mod+R" = { action = "submap:resize", repeat = false }
+"submap[resize],H" = "window-modify-primary-extent:-0.05"
+"submap[resize],L" = "window-modify-primary-extent:0.05"
+"submap[resize],J" = "window-modify-secondary-extent:-0.05"
+"submap[resize],K" = "window-modify-secondary-extent:0.05"
+"submap[resize],Escape" = "submap:reset"
