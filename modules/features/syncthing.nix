@@ -15,7 +15,7 @@
         home-server = {
           id = "MI4YDN7-YB4WBEU-VX5GL37-6ORZLMJ-Q73GK66-FOU7GQJ-X5OSP6L-A5KESAK";
           addresses = [
-            "tcp://homeserver:22000"
+            "tcp://home-server:22000"
             "dynamic"
           ];
         };
