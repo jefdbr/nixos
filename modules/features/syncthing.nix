@@ -36,29 +36,49 @@
           inherit devices;
           options.relaysEnabled = true;
 
-          folders.uni = {
-            path = "/home/jeffrey/uni";
+          folders = {
+            uni = {
+              path = "/home/jeffrey/uni";
+              devices = [
+                "laptop"
+                "desktop"
+                "home-server"
+              ];
+              versioning = {
+                type = "staggered";
+                params = {
+                  cleanInterval = "3600";
+                  maxAge = "2592000";
+                };
+              };
+            };
+          };
+
+          wallpapers = {
+            path = "/home/jeffey/Pictures/Wallpapers";
             devices = [
               "laptop"
               "desktop"
               "home-server"
             ];
-            versioning = {
-              type = "staggered";
-              params = {
-                cleanInterval = "3600";
-                maxAge = "2592000";
-              };
-            };
           };
         };
       };
 
-      # Keep Emacs lock/backup/autosave files out of the sync
       home-manager.users.jeffrey.home.file."uni/.stignore".text = ''
         .#*
         #*#
         *~
+        (?d).venv
+        (?d)venv
+        (?d).direnv
+        (?d)__pycache__
+        (?d)*.pyc
+        (?d).ipynb_checkpoints
+        (?d).pytest_cache
+        (?d).mypy_cache
+        (?d).ruff_cache
+        (?d)node_modules
       '';
     };
 }
