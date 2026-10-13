@@ -27,6 +27,14 @@
       {
         networking.hostName = "desktop";
         system.stateVersion = "25.11";
+        services.input-remapper.enable = true;
+        services.keyd = {
+          enable = true;
+          keyboards.default = {
+            ids = [ "*" ];
+            settings.main = { };
+          };
+        };
       }
     ];
   };
