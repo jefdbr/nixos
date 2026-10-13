@@ -55,7 +55,7 @@
           };
 
           wallpapers = {
-            path = "/home/jeffey/Pictures/Wallpapers";
+            path = "/home/jeffrey/Pictures/Wallpapers";
             devices = [
               "laptop"
               "desktop"
