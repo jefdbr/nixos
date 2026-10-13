@@ -24,6 +24,7 @@
       self.nixosModules.calendar
       self.nixosModules.helium
       self.nixosModules.gaming
+      self.nixosModules.syncthing
       {
         networking.hostName = "desktop";
         system.stateVersion = "25.11";
