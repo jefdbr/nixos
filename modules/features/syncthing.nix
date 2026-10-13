@@ -52,16 +52,17 @@
                 };
               };
             };
+
+            wallpapers = {
+              path = "/home/jeffrey/Pictures/Wallpapers";
+              devices = [
+                "laptop"
+                "desktop"
+                "home-server"
+              ];
+            };
           };
 
-          wallpapers = {
-            path = "/home/jeffrey/Pictures/Wallpapers";
-            devices = [
-              "laptop"
-              "desktop"
-              "home-server"
-            ];
-          };
         };
       };
 
