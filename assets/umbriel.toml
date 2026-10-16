@@ -181,8 +181,10 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "XF86AudioPause" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true }
 "XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
 "XF86AudioPrev" = { action = "spawn:noctalia msg media previous", allow_when_locked = true }
+"XF86AudioMedia" = { action = "spawn:noctalia msg caffeine-toggle", repeat = false }
 
 "Mod+P" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Print" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
 "Mod+Shift+P" = { action = "spawn:noctalia msg screenshot-annotate", repeat = false }
 "Mod+Alt+P" = { action = '''spawn:cur="$(umbriel workspaces --json | jq -r '.[] | select(.focused) | .output')"; wl-mirror --fullscreen-output "$(umbriel outputs --json | jq -r '.[] | select(.enabled) | .name' | grep -vx "$cur" | noctalia dmenu -p 'Mirror current screen to screen...')" "$cur"''', repeat = false }
 
