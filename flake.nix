@@ -37,8 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Do not override its nixpkgs input, otherwise there can be mismatch between patches and kernel version
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
