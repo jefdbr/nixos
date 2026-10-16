@@ -11,10 +11,8 @@
     {
       imports = [
         (modulesPath + "/installer/scan/not-detected.nix")
-        inputs.nixos-hardware.nixosModules.framework-13-inch-intel-core-ultra-series3
+        inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series3
       ];
-
-      boot.kernelPackages = pkgs.linuxPackages_zen;
 
       boot.initrd.availableKernelModules = [
         "xhci_pci"
