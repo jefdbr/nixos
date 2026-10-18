@@ -11,6 +11,22 @@
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
       services = {
+        keyd = {
+          enable = true;
+          keyboards.default = {
+            ids = [ "*" ];
+            settings = {
+              main = { };
+              alt = {
+                h = "left";
+                j = "down";
+                k = "up";
+                l = "right";
+              };
+            };
+          };
+        };
+
         displayManager.noctalia-greeter = {
           enable = true;
           passwordless-sync-users = [ "jeffrey" ];

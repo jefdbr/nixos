@@ -139,6 +139,10 @@ match.title = "^(Picture-in-Picture|Picture in picture)$"
 default_floating = true
 default_position = { x = 20, y = 20, anchor = "bottom_right" }
 
+[[window_rule]]
+match.is_alone = true
+default_maximize_to_edges = true
+
 # ══════════════════════════════════════════
 #  KEY BINDINGS
 #  Defining [keybinds] replaces all of Umbriel's built-in binds.
@@ -150,6 +154,21 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 "Alt+L" = "spawn:wtype -k Right"
 "Alt+J" = "spawn:wtype -k Down"
 "Alt+K" = "spawn:wtype -k Up"
+
+"Ctrl+Alt+H" = "spawn:wtype -M ctrl -k Left -m ctrl"
+"Ctrl+Alt+L" = "spawn:wtype -M ctrl -k Right -m ctrl"
+"Ctrl+Alt+J" = "spawn:wtype -M ctrl -k Down -m ctrl"
+"Ctrl+Alt+K" = "spawn:wtype -M ctrl -k Up -m ctrl"
+
+"Shift+Alt+H" = "spawn:wtype -M shift -k Left -m shift"
+"Shift+Alt+L" = "spawn:wtype -M shift -k Right -m shift"
+"Shift+Alt+J" = "spawn:wtype -M shift -k Down -m shift"
+"Shift+Alt+K" = "spawn:wtype -M shift -k Up -m shift"
+
+"Ctrl+Shift+Alt+H" = "spawn:wtype -M ctrl -M shift -k Left -m shift -m ctrl"
+"Ctrl+Shift+Alt+L" = "spawn:wtype -M ctrl -M shift -k Right -m shift -m ctrl"
+"Ctrl+Shift+Alt+J" = "spawn:wtype -M ctrl -M shift -k Down -m shift -m ctrl"
+"Ctrl+Shift+Alt+K" = "spawn:wtype -M ctrl -M shift -k Up -m shift -m ctrl"
 
 # Window / session
 "Mod+Q" = { action = "window-close", repeat = false }
