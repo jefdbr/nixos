@@ -43,17 +43,19 @@
               zstyle :omz:plugins:ssh-agent lazy yes
             '';
           };
+
           initContent = ''
             export EDITOR="emacsclient -nw"
             export VISUAL="emacsclient -nw"
 
             if [[ -z "$INSIDE_EMACS" ]]; then
+              zvm_after_init_commands+=('eval "$(atuin init zsh --disable-up-arrow --disable-ai)"')
               source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+            else
+              eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
             fi
-
-
-            eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
           '';
+
           shellAliases = {
             e = "emacsclient -nw -a ''";
             o = "xdg-open";
