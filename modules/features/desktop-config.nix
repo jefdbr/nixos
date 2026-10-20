@@ -16,8 +16,10 @@
           keyboards.default = {
             ids = [ "*" ];
             settings = {
-              main = { };
-              alt = {
+              main = {
+                capslock = "overload(nav, capslock)";
+              };
+              nav = {
                 h = "left";
                 j = "down";
                 k = "up";
