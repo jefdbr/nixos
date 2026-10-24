@@ -23,6 +23,9 @@ tap = true
 natural_scroll = true
 scroll_factor = 1.0
 
+[input.touch]
+enabled = false
+
 [input.mouse]
 accel_profile = "flat"
 
