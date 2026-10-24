@@ -4,9 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,9 +48,23 @@
   };
 
   outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
-      imports = [ (inputs.import-tree ./modules) ];
+    { nixpkgs, ... }@inputs:
+    let
+      # Every module can take `inputs` and `user` as arguments.
+      mkHost =
+        name:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            user = "jeffrey";
+          };
+          modules = [ ./hosts/${name} ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        desktop = mkHost "desktop";
+        laptop = mkHost "laptop";
+      };
     };
 }
