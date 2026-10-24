@@ -138,6 +138,8 @@ in
         wtype
         spotify
         libnotify
+        krita
+        xournalpp
       ];
     };
 }

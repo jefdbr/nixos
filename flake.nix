@@ -50,7 +50,6 @@
   outputs =
     { nixpkgs, ... }@inputs:
     let
-      # Every module can take `inputs` and `user` as arguments.
       mkHost =
         name:
         nixpkgs.lib.nixosSystem {
