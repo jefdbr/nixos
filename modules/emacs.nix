@@ -73,9 +73,16 @@ in
       tree-sitter
       shellcheck
       statix
+      rustc
+      cargo
+      rustfmt
+      clippy
+      rust-analyzer
     ];
 
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];
+
+    home.sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
     xdg.desktopEntries = {
       "emacs" = {

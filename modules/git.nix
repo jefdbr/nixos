@@ -5,7 +5,7 @@
     settings = {
       user = {
         name = "Jeffrey Debaere";
-        email = "jeffreydebaere@proton.me";
+        email = "jeffreydebaere19@gmail.com";
       };
       init.defaultBranch = "main";
       pull.rebase = false;
