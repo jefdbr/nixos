@@ -78,6 +78,7 @@ in
       rustfmt
       clippy
       rust-analyzer
+      gdb
     ];
 
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];

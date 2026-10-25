@@ -72,5 +72,7 @@ in
     (?d).mypy_cache
     (?d).ruff_cache
     (?d)node_modules
+    #include .gitignore
+    target
   '';
 }
