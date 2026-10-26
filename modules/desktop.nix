@@ -141,6 +141,7 @@ in
         libnotify
         krita
         xournalpp
+        rnote
       ];
     };
 }
