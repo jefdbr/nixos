@@ -73,35 +73,43 @@ in
     };
   };
 
-  home-manager.users.${user}.xdg.configFile."kdeglobals".text = ''
-    [General]
-    ColorScheme=Stylix
+  home-manager.users.${user} = {
+    stylix.targets = {
+      vscode.enable = false;
+      emacs.enable = false;
+      niri.enable = false;
+    };
 
-    [KDE]
-    widgetStyle=Breeze
+    xdg.configFile."kdeglobals".text = ''
+      [General]
+      ColorScheme=Stylix
 
-    [Colors:View]
-    BackgroundNormal=${hexToRgb c.base00}
-    ForegroundNormal=${hexToRgb c.base05}
+      [KDE]
+      widgetStyle=Breeze
 
-    [Colors:Window]
-    BackgroundNormal=${hexToRgb c.base01}
-    ForegroundNormal=${hexToRgb c.base05}
+      [Colors:View]
+      BackgroundNormal=${hexToRgb c.base00}
+      ForegroundNormal=${hexToRgb c.base05}
 
-    [Colors:Button]
-    BackgroundNormal=${hexToRgb c.base02}
-    ForegroundNormal=${hexToRgb c.base05}
+      [Colors:Window]
+      BackgroundNormal=${hexToRgb c.base01}
+      ForegroundNormal=${hexToRgb c.base05}
 
-    [Colors:Selection]
-    BackgroundNormal=${hexToRgb c.base0D}
-    ForegroundNormal=${hexToRgb c.base07}
+      [Colors:Button]
+      BackgroundNormal=${hexToRgb c.base02}
+      ForegroundNormal=${hexToRgb c.base05}
 
-    [Colors:Tooltip]
-    BackgroundNormal=${hexToRgb c.base01}
-    ForegroundNormal=${hexToRgb c.base05}
+      [Colors:Selection]
+      BackgroundNormal=${hexToRgb c.base0D}
+      ForegroundNormal=${hexToRgb c.base07}
 
-    [Colors:Complementary]
-    BackgroundNormal=${hexToRgb c.base00}
-    ForegroundNormal=${hexToRgb c.base05}
-  '';
+      [Colors:Tooltip]
+      BackgroundNormal=${hexToRgb c.base01}
+      ForegroundNormal=${hexToRgb c.base05}
+
+      [Colors:Complementary]
+      BackgroundNormal=${hexToRgb c.base00}
+      ForegroundNormal=${hexToRgb c.base05}
+    '';
+  };
 }

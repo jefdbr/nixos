@@ -23,6 +23,10 @@ tap = true
 natural_scroll = true
 scroll_factor = 1.0
 
+[input.tablet]
+enabled = true
+map_to_output = "DP-2"
+
 [input.touch]
 enabled = false
 

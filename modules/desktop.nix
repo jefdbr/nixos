@@ -21,6 +21,8 @@ in
     nautilus
   ];
 
+  hardware.opentabletdriver.enable = true;
+
   services = {
     keyd = {
       enable = true;
@@ -124,7 +126,6 @@ in
         niri.config = null;
       };
 
-      stylix.targets.niri.enable = false;
       systemd.user.startServices = "sd-switch";
 
       home.packages = with pkgs; [
