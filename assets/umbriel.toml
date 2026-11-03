@@ -167,7 +167,7 @@ default_maximize_to_edges = true
 "Ctrl+Alt+Return" = { action = "window-toggle-fullscreen", repeat = false }
 # Escape hatch when a game/remote desktop grabs all shortcuts
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
-"Alt+Tab" = { action = "spawn noctalia msg window-switcher" }
+# "Alt+Tab" = { action = "spawn noctalia msg window-switcher" }
 "Mod+Shift+L" = "workspace-set-layout toggle scrolling dwindle"
 
 # App launchers
@@ -249,8 +249,8 @@ default_maximize_to_edges = true
 
 "Mod+M" = { action = "window-toggle-maximize", repeat = false }
 "Mod+R" = { action = "submap resize", repeat = false }
-"submap[resize],H" = "window-modify-primary-extent -0.05"
-"submap[resize],L" = "window-modify-primary-extent 0.05"
-"submap[resize],J" = "window-modify-secondary-extent -0.05"
-"submap[resize],K" = "window-modify-secondary-extent 0.05"
+"submap[resize],H" = "window-modify-primary-extent -0.01"
+"submap[resize],L" = "window-modify-primary-extent 0.01"
+"submap[resize],J" = "window-modify-secondary-extent -0.01"
+"submap[resize],K" = "window-modify-secondary-extent 0.01"
 "submap[resize],Escape" = "submap reset"

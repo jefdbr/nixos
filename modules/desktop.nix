@@ -70,6 +70,11 @@ in
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      extraConfig.pipewire."99-disable-x11-bell" = {
+        "context.properties" = {
+          "module.x11.bell" = false;
+        };
+      };
       wireplumber = {
         enable = true;
         extraConfig."90-prevent-helium-mic-adjust" = {
