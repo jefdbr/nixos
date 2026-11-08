@@ -125,6 +125,15 @@ in
         config.lib.file.mkOutOfStoreSymlink "${flakeDir}/assets/umbriel.toml";
 
       programs = {
+        rbw = {
+          enable = true;
+          settings = {
+            email = "jeffreydebaere19@gmail.com";
+            base_url = "https://home-server.tailf8334c.ts.net:1052/";
+            pinentry = pkgs.pinentry-gnome3;
+            lock_timeout = 3600;
+          };
+        };
         vscode.enable = true;
         fzf.enable = true;
         nix-index-database.comma.enable = true;

@@ -4,6 +4,7 @@
     ./hardware.nix
     ../../modules
     ../../modules/gaming.nix
+    ../../modules/open-webui.nix
   ];
 
   networking.hostName = "desktop";
