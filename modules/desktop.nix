@@ -140,8 +140,6 @@ in
 
       home.packages = with pkgs; [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        bitwarden-cli
-        bitwarden-desktop
         swappy
         mpv
         wl-clipboard
