@@ -61,10 +61,6 @@ in
       nssmdns4 = true;
       openFirewall = true;
     };
-    scx = {
-      enable = true;
-      scheduler = "scx_lavd";
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
