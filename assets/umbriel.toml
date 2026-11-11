@@ -56,7 +56,7 @@ files = ["outputs.toml"]
 
 [layout]
 mode = "scrolling"
-gap = 4
+gap = 2
 extent_presets = [0.33333, 0.5, 0.66667, 1.0]
 
 [layout.scrolling]
@@ -74,8 +74,8 @@ shortcuts = false
 
 [appearance]
 prefer_no_csd = true
-border_width = 2
-corner_radius = 10
+border_width = 1
+corner_radius = 5
 
 [appearance.shadow]
 enabled = false
@@ -84,8 +84,8 @@ enabled = false
 radius = 3
 
 [colors.border]
-focused = "#ffffff60"
-unfocused = "#ffffff00"
+focused = "#ffffff80"
+unfocused = "#ffffff30"
 
 # ══════════════════════════════════════════
 #  LAYER RULES

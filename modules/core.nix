@@ -15,6 +15,7 @@
     python3
     ps_mem
     btop
+    uv
   ];
 
   virtualisation.docker = {
