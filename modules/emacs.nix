@@ -62,6 +62,8 @@
       clippy
       rust-analyzer
       gdb
+      nerd-fonts.symbols-only
+      symbola
     ];
 
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];
