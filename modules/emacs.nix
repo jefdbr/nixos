@@ -49,7 +49,7 @@
       vscode-langservers-extracted
       clang-tools
       ruff
-      pyright
+      basedpyright
       texlab
       nixd
       nil
