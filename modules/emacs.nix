@@ -30,6 +30,7 @@
       binutils
       gnutls
       imagemagick
+      poppler-utils
       zstd
       editorconfig-core-c
       sqlite
