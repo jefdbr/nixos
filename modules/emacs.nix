@@ -65,6 +65,8 @@
       gdb
       nerd-fonts.symbols-only
       symbola
+      sshfs
+      fuse3
     ];
 
     home.sessionPath = [ "$HOME/.config/emacs/bin" ];

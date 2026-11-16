@@ -10,7 +10,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
