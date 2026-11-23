@@ -197,7 +197,18 @@ default_floating = true
 "Mod+P" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 "Print" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 "Mod+Shift+P" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
-"Mod+Alt+P" = { action = '''spawn cur="$(umbriel workspaces --json | jq -r '.[] | select(.focused) | .output')"; wl-mirror --fullscreen-output "$(umbriel outputs --json | jq -r '.[] | select(.enabled) | .name' | grep -vx "$cur" | noctalia dmenu -p 'Mirror current screen to screen...')" "$cur"''', repeat = false }
+"Mod+Alt+P" = { repeat = false, action = '''spawn
+o="$(umbriel outputs --json)"
+
+cur="$(printf '%s' "$o" | jq -r '.[] | select(.focused) | .name')"
+
+src="$(printf '%s' "$o" | jq -r '.[] | select(.enabled and (.focused | not)) | .name' | noctalia dmenu -p 'Mirror onto this screen…')" || exit 0
+
+wl-mirror --fullscreen-output "$cur" "$src" &
+
+sleep 0.3
+umbriel msg output-focus-next
+''' }
 
 # Scratchpad
 "Mod+Shift+Space" = "window-move-to-scratchpad"

@@ -9,28 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/cachix";
-    };
-
-    luciole = {
-      url = "github:noctalia-dev/luciole/cachix";
-    };
-
-    noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter/cachix";
-    };
-
-    umbriel = {
-      url = "github:noctalia-dev/umbriel/cachix";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -41,6 +23,12 @@
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    luciole.url = "github:noctalia-dev/luciole/cachix";
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter/cachix";
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
   };
 
   outputs =
