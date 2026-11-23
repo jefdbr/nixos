@@ -198,6 +198,9 @@ default_floating = true
 "Print" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 "Mod+Shift+P" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
 "Mod+Alt+P" = { repeat = false, action = '''spawn
+# If running kill and exit
+pkill -x wl-mirror && umbriel msg output-focus-next && exit 0
+
 o="$(umbriel outputs --json)"
 
 cur="$(printf '%s' "$o" | jq -r '.[] | select(.focused) | .name')"
