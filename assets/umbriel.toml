@@ -43,8 +43,7 @@ size = 24
 
 # ══════════════════════════════════════════
 #  OUTPUTS / MONITORS
-#  Names are "<make> <model> <serial>". Umbriel may spell them slightly
-#  differently from niri: check the "Config name" line of `umbriel outputs`.
+#  Managed by noctalia plugin
 # ══════════════════════════════════════════
 
 [include]
@@ -151,6 +150,10 @@ default_position = { x = 20, y = 20, anchor = "bottom_right" }
 match.is_alone = true
 default_maximize_to_edges = true
 
+[[window_rule]]
+match.app_id = "^chrome-nngceckbapebfimnlniiiahkandclblb-Default$" # Bitwarden extension popup
+default_floating = true
+
 # ══════════════════════════════════════════
 #  KEY BINDINGS
 #  Defining [keybinds] replaces all of Umbriel's built-in binds.
@@ -195,6 +198,12 @@ default_maximize_to_edges = true
 "Print" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 "Mod+Shift+P" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
 "Mod+Alt+P" = { action = '''spawn cur="$(umbriel workspaces --json | jq -r '.[] | select(.focused) | .output')"; wl-mirror --fullscreen-output "$(umbriel outputs --json | jq -r '.[] | select(.enabled) | .name' | grep -vx "$cur" | noctalia dmenu -p 'Mirror current screen to screen...')" "$cur"''', repeat = false }
+
+# Scratchpad
+"Mod+Shift+Space" = "window-move-to-scratchpad"
+"Mod+Space" = "scratchpad-toggle"
+"Mod+Ctrl+Space" = "window-restore-from-scratchpad"
+"Mod+Tab" = "scratchpad-focus-next"
 
 # Focus navigation
 "Mod+H" = "window-focus-left"

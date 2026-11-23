@@ -6,12 +6,10 @@
   ...
 }:
 let
-  # Where this repo lives on disk, for live-editable (out-of-store) dotfiles.
   flakeDir = config.programs.nh.flake;
 in
 {
   imports = [
-    inputs.niri.nixosModules.niri
     inputs.noctalia-greeter.nixosModules.default
     inputs.umbriel.nixosModules.default
   ];
@@ -47,6 +45,10 @@ in
       passwordless-sync-users = [ user ];
       settings = {
         user.default = user;
+        appearance = {
+          scheme_selector_position = "hidden";
+          hide_logo = true;
+        };
         cursor = {
           path = pkgs.bibata-cursors;
           theme = "Bibata-Modern-Ice";
@@ -91,31 +93,33 @@ in
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [
+      inputs.luciole.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [
+        "luciole"
+        "gtk"
+      ];
+    };
   };
 
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;
-    # nixpkgs' niri. (niri-flake's niri-stable doesn't currently build
-    # against this nixpkgs, and its overlay was never actually used.)
-    niri = {
-      enable = true;
-      package = pkgs.niri;
-    };
     umbriel.enable = true;
     gpu-screen-recorder.enable = true;
   };
 
-  systemd.user.services.niri-flake-polkit.enable = false;
-
   home-manager.users.${user} =
     { config, ... }:
     {
-      imports = [ inputs.nix-index-database.homeModules.nix-index ];
-
-      xdg.configFile."niri/config.kdl".source =
-        config.lib.file.mkOutOfStoreSymlink "${flakeDir}/assets/niri.kdl";
+      imports = [
+        inputs.nix-index-database.homeModules.nix-index
+        inputs.luciole.homeModules.default
+      ];
 
       xdg.configFile."umbriel/config.toml".source =
         config.lib.file.mkOutOfStoreSymlink "${flakeDir}/assets/umbriel.toml";
@@ -133,7 +137,15 @@ in
         vscode.enable = true;
         fzf.enable = true;
         nix-index-database.comma.enable = true;
-        niri.config = null;
+        luciole = {
+          enable = true;
+          settings = {
+            browser = {
+              view_mode = "grid";
+              show_hidden = false;
+            };
+          };
+        };
       };
 
       systemd.user.startServices = "sd-switch";

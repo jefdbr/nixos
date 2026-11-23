@@ -77,7 +77,7 @@ in
     stylix.targets = {
       vscode.enable = false;
       emacs.enable = false;
-      niri.enable = false;
+      wayprompt.enable = false;
     };
 
     xdg.configFile."kdeglobals".text = ''

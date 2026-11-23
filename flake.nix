@@ -11,26 +11,22 @@
 
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    luciole = {
+      url = "github:noctalia-dev/luciole/cachix";
     };
 
     noctalia-greeter = {
-      url = "github:noctalia-dev/noctalia-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia-greeter/cachix";
+    };
+
+    umbriel = {
+      url = "github:noctalia-dev/umbriel/cachix";
     };
 
     stylix = {
       url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    umbriel = {
-      url = "github:noctalia-dev/umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
